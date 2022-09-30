@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@graphprotocol/client-cli": "^2.2.11"
+  }
+}

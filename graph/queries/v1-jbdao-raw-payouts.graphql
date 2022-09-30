@@ -1,0 +1,13 @@
+query v1JuiceboxRawPayouts {
+  projects(where: { id: "1-1" }) {
+    tapEvents(orderBy: timestamp, orderDirection: desc) {
+      distributions {
+        timestamp
+        modCut
+        modBeneficiary
+        modProjectId
+        txHash
+      }
+    }
+  }
+}

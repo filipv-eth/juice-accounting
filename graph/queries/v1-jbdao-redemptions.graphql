@@ -1,0 +1,12 @@
+query v1JbdaoRedemptions {
+  projects(where: { id: "1-1" }) {
+    redeemEvents(orderBy: timestamp, orderDirection: desc) {
+      timestamp
+      returnAmount
+      amount
+      caller
+      beneficiary
+      txHash
+    }
+  }
+}

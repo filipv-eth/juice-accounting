@@ -1,0 +1,11 @@
+query v2JbdaoPayments {
+  projects(where: { id: "2-1" }) {
+    payEvents(orderBy: timestamp, orderDirection: desc) {
+      timestamp
+      amount
+      caller
+      note
+      txHash
+    }
+  }
+}

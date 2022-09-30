@@ -1,0 +1,16 @@
+query v1JuiceboxPayouts {
+  projects(where: { id: "1-1" }) {
+    tapEvents(orderBy: timestamp, orderDirection: desc) {
+      timestamp
+      netTransferAmount
+      govFeeAmount
+      distributions {
+        modCut
+        modProjectId
+        modBeneficiary
+      }
+      txHash
+      currency
+    }
+  }
+}

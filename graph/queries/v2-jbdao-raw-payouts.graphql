@@ -1,0 +1,13 @@
+query v2JbdaoRawPayouts {
+  projects(where: { id: "2-1" }) {
+    distributePayoutsEvents(orderBy: timestamp, orderDirection: desc){
+      splitDistributions {
+        timestamp
+        amount
+        beneficiary
+        splitProjectId
+        txHash
+      }
+    }
+  }
+}

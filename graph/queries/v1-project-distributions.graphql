@@ -1,0 +1,10 @@
+query v1ProjectDistributions {
+  tapEvents(orderBy: timestamp, orderDirection: desc){
+    timestamp
+    amount
+    govFeeAmount
+    projectId
+    txHash
+    currency
+  }
+}

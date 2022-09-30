@@ -1,0 +1,5004 @@
+schema {
+  query: Query
+  subscription: Subscription
+}
+
+"Marks the GraphQL type as indexable entity.  Each type that should be an entity is required to be annotated with this directive."
+directive @entity on OBJECT
+
+"Defined a Subgraph ID for an object type"
+directive @subgraphId(id: String!) on OBJECT
+
+"creates a virtual field on the entity that may be queried but cannot be set manually through the mappings API."
+directive @derivedFrom(field: String!) on FIELD_DEFINITION
+
+scalar BigDecimal
+
+scalar BigInt
+
+input BlockChangedFilter {
+  number_gte: Int!
+}
+
+input Block_height {
+  hash: Bytes
+  number: Int
+  number_gte: Int
+}
+
+scalar Bytes
+
+type DeployETHERC20ProjectPayerEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  timestamp: Int!
+  txHash: Bytes!
+  address: Bytes!
+  beneficiary: Bytes!
+  preferClaimedTokens: Boolean!
+  preferAddToBalance: Boolean!
+  directory: Bytes!
+  owner: Bytes!
+  memo: String
+  metadata: Bytes
+  caller: Bytes!
+}
+
+input DeployETHERC20ProjectPayerEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  address: Bytes
+  address_not: Bytes
+  address_in: [Bytes!]
+  address_not_in: [Bytes!]
+  address_contains: Bytes
+  address_not_contains: Bytes
+  beneficiary: Bytes
+  beneficiary_not: Bytes
+  beneficiary_in: [Bytes!]
+  beneficiary_not_in: [Bytes!]
+  beneficiary_contains: Bytes
+  beneficiary_not_contains: Bytes
+  preferClaimedTokens: Boolean
+  preferClaimedTokens_not: Boolean
+  preferClaimedTokens_in: [Boolean!]
+  preferClaimedTokens_not_in: [Boolean!]
+  preferAddToBalance: Boolean
+  preferAddToBalance_not: Boolean
+  preferAddToBalance_in: [Boolean!]
+  preferAddToBalance_not_in: [Boolean!]
+  directory: Bytes
+  directory_not: Bytes
+  directory_in: [Bytes!]
+  directory_not_in: [Bytes!]
+  directory_contains: Bytes
+  directory_not_contains: Bytes
+  owner: Bytes
+  owner_not: Bytes
+  owner_in: [Bytes!]
+  owner_not_in: [Bytes!]
+  owner_contains: Bytes
+  owner_not_contains: Bytes
+  memo: String
+  memo_not: String
+  memo_gt: String
+  memo_lt: String
+  memo_gte: String
+  memo_lte: String
+  memo_in: [String!]
+  memo_not_in: [String!]
+  memo_contains: String
+  memo_contains_nocase: String
+  memo_not_contains: String
+  memo_not_contains_nocase: String
+  memo_starts_with: String
+  memo_starts_with_nocase: String
+  memo_not_starts_with: String
+  memo_not_starts_with_nocase: String
+  memo_ends_with: String
+  memo_ends_with_nocase: String
+  memo_not_ends_with: String
+  memo_not_ends_with_nocase: String
+  metadata: Bytes
+  metadata_not: Bytes
+  metadata_in: [Bytes!]
+  metadata_not_in: [Bytes!]
+  metadata_contains: Bytes
+  metadata_not_contains: Bytes
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum DeployETHERC20ProjectPayerEvent_orderBy {
+  id
+  project
+  projectId
+  timestamp
+  txHash
+  address
+  beneficiary
+  preferClaimedTokens
+  preferAddToBalance
+  directory
+  owner
+  memo
+  metadata
+  caller
+}
+
+type DeployedERC20Event {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  cv: String!
+  timestamp: Int!
+  txHash: Bytes!
+  symbol: String!
+  address: Bytes
+}
+
+input DeployedERC20Event_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  cv: String
+  cv_not: String
+  cv_gt: String
+  cv_lt: String
+  cv_gte: String
+  cv_lte: String
+  cv_in: [String!]
+  cv_not_in: [String!]
+  cv_contains: String
+  cv_contains_nocase: String
+  cv_not_contains: String
+  cv_not_contains_nocase: String
+  cv_starts_with: String
+  cv_starts_with_nocase: String
+  cv_not_starts_with: String
+  cv_not_starts_with_nocase: String
+  cv_ends_with: String
+  cv_ends_with_nocase: String
+  cv_not_ends_with: String
+  cv_not_ends_with_nocase: String
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  symbol: String
+  symbol_not: String
+  symbol_gt: String
+  symbol_lt: String
+  symbol_gte: String
+  symbol_lte: String
+  symbol_in: [String!]
+  symbol_not_in: [String!]
+  symbol_contains: String
+  symbol_contains_nocase: String
+  symbol_not_contains: String
+  symbol_not_contains_nocase: String
+  symbol_starts_with: String
+  symbol_starts_with_nocase: String
+  symbol_not_starts_with: String
+  symbol_not_starts_with_nocase: String
+  symbol_ends_with: String
+  symbol_ends_with_nocase: String
+  symbol_not_ends_with: String
+  symbol_not_ends_with_nocase: String
+  address: Bytes
+  address_not: Bytes
+  address_in: [Bytes!]
+  address_not_in: [Bytes!]
+  address_contains: Bytes
+  address_not_contains: Bytes
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum DeployedERC20Event_orderBy {
+  id
+  project
+  projectId
+  cv
+  timestamp
+  txHash
+  symbol
+  address
+}
+
+type DistributePayoutsEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  timestamp: Int!
+  txHash: Bytes!
+  fundingCycleConfiguration: BigInt!
+  fundingCycleNumber: Int!
+  beneficiary: Bytes!
+  amount: BigInt!
+  distributedAmount: BigInt!
+  fee: BigInt!
+  beneficiaryDistributionAmount: BigInt!
+  memo: String!
+  caller: Bytes!
+  splitDistributions(skip: Int = 0, first: Int = 100, orderBy: DistributeToPayoutSplitEvent_orderBy, orderDirection: OrderDirection, where: DistributeToPayoutSplitEvent_filter): [DistributeToPayoutSplitEvent!]!
+}
+
+input DistributePayoutsEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  fundingCycleConfiguration: BigInt
+  fundingCycleConfiguration_not: BigInt
+  fundingCycleConfiguration_gt: BigInt
+  fundingCycleConfiguration_lt: BigInt
+  fundingCycleConfiguration_gte: BigInt
+  fundingCycleConfiguration_lte: BigInt
+  fundingCycleConfiguration_in: [BigInt!]
+  fundingCycleConfiguration_not_in: [BigInt!]
+  fundingCycleNumber: Int
+  fundingCycleNumber_not: Int
+  fundingCycleNumber_gt: Int
+  fundingCycleNumber_lt: Int
+  fundingCycleNumber_gte: Int
+  fundingCycleNumber_lte: Int
+  fundingCycleNumber_in: [Int!]
+  fundingCycleNumber_not_in: [Int!]
+  beneficiary: Bytes
+  beneficiary_not: Bytes
+  beneficiary_in: [Bytes!]
+  beneficiary_not_in: [Bytes!]
+  beneficiary_contains: Bytes
+  beneficiary_not_contains: Bytes
+  amount: BigInt
+  amount_not: BigInt
+  amount_gt: BigInt
+  amount_lt: BigInt
+  amount_gte: BigInt
+  amount_lte: BigInt
+  amount_in: [BigInt!]
+  amount_not_in: [BigInt!]
+  distributedAmount: BigInt
+  distributedAmount_not: BigInt
+  distributedAmount_gt: BigInt
+  distributedAmount_lt: BigInt
+  distributedAmount_gte: BigInt
+  distributedAmount_lte: BigInt
+  distributedAmount_in: [BigInt!]
+  distributedAmount_not_in: [BigInt!]
+  fee: BigInt
+  fee_not: BigInt
+  fee_gt: BigInt
+  fee_lt: BigInt
+  fee_gte: BigInt
+  fee_lte: BigInt
+  fee_in: [BigInt!]
+  fee_not_in: [BigInt!]
+  beneficiaryDistributionAmount: BigInt
+  beneficiaryDistributionAmount_not: BigInt
+  beneficiaryDistributionAmount_gt: BigInt
+  beneficiaryDistributionAmount_lt: BigInt
+  beneficiaryDistributionAmount_gte: BigInt
+  beneficiaryDistributionAmount_lte: BigInt
+  beneficiaryDistributionAmount_in: [BigInt!]
+  beneficiaryDistributionAmount_not_in: [BigInt!]
+  memo: String
+  memo_not: String
+  memo_gt: String
+  memo_lt: String
+  memo_gte: String
+  memo_lte: String
+  memo_in: [String!]
+  memo_not_in: [String!]
+  memo_contains: String
+  memo_contains_nocase: String
+  memo_not_contains: String
+  memo_not_contains_nocase: String
+  memo_starts_with: String
+  memo_starts_with_nocase: String
+  memo_not_starts_with: String
+  memo_not_starts_with_nocase: String
+  memo_ends_with: String
+  memo_ends_with_nocase: String
+  memo_not_ends_with: String
+  memo_not_ends_with_nocase: String
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  splitDistributions_: DistributeToPayoutSplitEvent_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum DistributePayoutsEvent_orderBy {
+  id
+  project
+  projectId
+  timestamp
+  txHash
+  fundingCycleConfiguration
+  fundingCycleNumber
+  beneficiary
+  amount
+  distributedAmount
+  fee
+  beneficiaryDistributionAmount
+  memo
+  caller
+  splitDistributions
+}
+
+type DistributeReservedTokensEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  timestamp: Int!
+  txHash: Bytes!
+  fundingCycleNumber: Int!
+  beneficiary: Bytes!
+  tokenCount: BigInt!
+  beneficiaryTokenCount: BigInt!
+  memo: String!
+  caller: Bytes!
+  splitDistributions(skip: Int = 0, first: Int = 100, orderBy: DistributeToReservedTokenSplitEvent_orderBy, orderDirection: OrderDirection, where: DistributeToReservedTokenSplitEvent_filter): [DistributeToReservedTokenSplitEvent!]!
+}
+
+input DistributeReservedTokensEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  fundingCycleNumber: Int
+  fundingCycleNumber_not: Int
+  fundingCycleNumber_gt: Int
+  fundingCycleNumber_lt: Int
+  fundingCycleNumber_gte: Int
+  fundingCycleNumber_lte: Int
+  fundingCycleNumber_in: [Int!]
+  fundingCycleNumber_not_in: [Int!]
+  beneficiary: Bytes
+  beneficiary_not: Bytes
+  beneficiary_in: [Bytes!]
+  beneficiary_not_in: [Bytes!]
+  beneficiary_contains: Bytes
+  beneficiary_not_contains: Bytes
+  tokenCount: BigInt
+  tokenCount_not: BigInt
+  tokenCount_gt: BigInt
+  tokenCount_lt: BigInt
+  tokenCount_gte: BigInt
+  tokenCount_lte: BigInt
+  tokenCount_in: [BigInt!]
+  tokenCount_not_in: [BigInt!]
+  beneficiaryTokenCount: BigInt
+  beneficiaryTokenCount_not: BigInt
+  beneficiaryTokenCount_gt: BigInt
+  beneficiaryTokenCount_lt: BigInt
+  beneficiaryTokenCount_gte: BigInt
+  beneficiaryTokenCount_lte: BigInt
+  beneficiaryTokenCount_in: [BigInt!]
+  beneficiaryTokenCount_not_in: [BigInt!]
+  memo: String
+  memo_not: String
+  memo_gt: String
+  memo_lt: String
+  memo_gte: String
+  memo_lte: String
+  memo_in: [String!]
+  memo_not_in: [String!]
+  memo_contains: String
+  memo_contains_nocase: String
+  memo_not_contains: String
+  memo_not_contains_nocase: String
+  memo_starts_with: String
+  memo_starts_with_nocase: String
+  memo_not_starts_with: String
+  memo_not_starts_with_nocase: String
+  memo_ends_with: String
+  memo_ends_with_nocase: String
+  memo_not_ends_with: String
+  memo_not_ends_with_nocase: String
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  splitDistributions_: DistributeToReservedTokenSplitEvent_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum DistributeReservedTokensEvent_orderBy {
+  id
+  project
+  projectId
+  timestamp
+  txHash
+  fundingCycleNumber
+  beneficiary
+  tokenCount
+  beneficiaryTokenCount
+  memo
+  caller
+  splitDistributions
+}
+
+type DistributeToPayoutModEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  timestamp: Int!
+  txHash: Bytes!
+  fundingCycleId: BigInt!
+  modProjectId: Int!
+  modAllocator: Bytes!
+  modBeneficiary: Bytes!
+  modPreferUnstaked: Boolean!
+  modCut: BigInt!
+  caller: Bytes!
+  tapEvent: TapEvent!
+}
+
+input DistributeToPayoutModEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  fundingCycleId: BigInt
+  fundingCycleId_not: BigInt
+  fundingCycleId_gt: BigInt
+  fundingCycleId_lt: BigInt
+  fundingCycleId_gte: BigInt
+  fundingCycleId_lte: BigInt
+  fundingCycleId_in: [BigInt!]
+  fundingCycleId_not_in: [BigInt!]
+  modProjectId: Int
+  modProjectId_not: Int
+  modProjectId_gt: Int
+  modProjectId_lt: Int
+  modProjectId_gte: Int
+  modProjectId_lte: Int
+  modProjectId_in: [Int!]
+  modProjectId_not_in: [Int!]
+  modAllocator: Bytes
+  modAllocator_not: Bytes
+  modAllocator_in: [Bytes!]
+  modAllocator_not_in: [Bytes!]
+  modAllocator_contains: Bytes
+  modAllocator_not_contains: Bytes
+  modBeneficiary: Bytes
+  modBeneficiary_not: Bytes
+  modBeneficiary_in: [Bytes!]
+  modBeneficiary_not_in: [Bytes!]
+  modBeneficiary_contains: Bytes
+  modBeneficiary_not_contains: Bytes
+  modPreferUnstaked: Boolean
+  modPreferUnstaked_not: Boolean
+  modPreferUnstaked_in: [Boolean!]
+  modPreferUnstaked_not_in: [Boolean!]
+  modCut: BigInt
+  modCut_not: BigInt
+  modCut_gt: BigInt
+  modCut_lt: BigInt
+  modCut_gte: BigInt
+  modCut_lte: BigInt
+  modCut_in: [BigInt!]
+  modCut_not_in: [BigInt!]
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  tapEvent: String
+  tapEvent_not: String
+  tapEvent_gt: String
+  tapEvent_lt: String
+  tapEvent_gte: String
+  tapEvent_lte: String
+  tapEvent_in: [String!]
+  tapEvent_not_in: [String!]
+  tapEvent_contains: String
+  tapEvent_contains_nocase: String
+  tapEvent_not_contains: String
+  tapEvent_not_contains_nocase: String
+  tapEvent_starts_with: String
+  tapEvent_starts_with_nocase: String
+  tapEvent_not_starts_with: String
+  tapEvent_not_starts_with_nocase: String
+  tapEvent_ends_with: String
+  tapEvent_ends_with_nocase: String
+  tapEvent_not_ends_with: String
+  tapEvent_not_ends_with_nocase: String
+  tapEvent_: TapEvent_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum DistributeToPayoutModEvent_orderBy {
+  id
+  project
+  projectId
+  timestamp
+  txHash
+  fundingCycleId
+  modProjectId
+  modAllocator
+  modBeneficiary
+  modPreferUnstaked
+  modCut
+  caller
+  tapEvent
+}
+
+type DistributeToPayoutSplitEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  timestamp: Int!
+  txHash: Bytes!
+  domain: BigInt!
+  group: BigInt!
+  amount: BigInt!
+  caller: Bytes!
+  distributePayoutsEvent: DistributePayoutsEvent!
+  preferClaimed: Boolean!
+  preferAddToBalance: Boolean!
+  percent: Int!
+  splitProjectId: Int!
+  beneficiary: Bytes!
+  lockedUntil: Int!
+  allocator: Bytes!
+}
+
+input DistributeToPayoutSplitEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  domain: BigInt
+  domain_not: BigInt
+  domain_gt: BigInt
+  domain_lt: BigInt
+  domain_gte: BigInt
+  domain_lte: BigInt
+  domain_in: [BigInt!]
+  domain_not_in: [BigInt!]
+  group: BigInt
+  group_not: BigInt
+  group_gt: BigInt
+  group_lt: BigInt
+  group_gte: BigInt
+  group_lte: BigInt
+  group_in: [BigInt!]
+  group_not_in: [BigInt!]
+  amount: BigInt
+  amount_not: BigInt
+  amount_gt: BigInt
+  amount_lt: BigInt
+  amount_gte: BigInt
+  amount_lte: BigInt
+  amount_in: [BigInt!]
+  amount_not_in: [BigInt!]
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  distributePayoutsEvent: String
+  distributePayoutsEvent_not: String
+  distributePayoutsEvent_gt: String
+  distributePayoutsEvent_lt: String
+  distributePayoutsEvent_gte: String
+  distributePayoutsEvent_lte: String
+  distributePayoutsEvent_in: [String!]
+  distributePayoutsEvent_not_in: [String!]
+  distributePayoutsEvent_contains: String
+  distributePayoutsEvent_contains_nocase: String
+  distributePayoutsEvent_not_contains: String
+  distributePayoutsEvent_not_contains_nocase: String
+  distributePayoutsEvent_starts_with: String
+  distributePayoutsEvent_starts_with_nocase: String
+  distributePayoutsEvent_not_starts_with: String
+  distributePayoutsEvent_not_starts_with_nocase: String
+  distributePayoutsEvent_ends_with: String
+  distributePayoutsEvent_ends_with_nocase: String
+  distributePayoutsEvent_not_ends_with: String
+  distributePayoutsEvent_not_ends_with_nocase: String
+  distributePayoutsEvent_: DistributePayoutsEvent_filter
+  preferClaimed: Boolean
+  preferClaimed_not: Boolean
+  preferClaimed_in: [Boolean!]
+  preferClaimed_not_in: [Boolean!]
+  preferAddToBalance: Boolean
+  preferAddToBalance_not: Boolean
+  preferAddToBalance_in: [Boolean!]
+  preferAddToBalance_not_in: [Boolean!]
+  percent: Int
+  percent_not: Int
+  percent_gt: Int
+  percent_lt: Int
+  percent_gte: Int
+  percent_lte: Int
+  percent_in: [Int!]
+  percent_not_in: [Int!]
+  splitProjectId: Int
+  splitProjectId_not: Int
+  splitProjectId_gt: Int
+  splitProjectId_lt: Int
+  splitProjectId_gte: Int
+  splitProjectId_lte: Int
+  splitProjectId_in: [Int!]
+  splitProjectId_not_in: [Int!]
+  beneficiary: Bytes
+  beneficiary_not: Bytes
+  beneficiary_in: [Bytes!]
+  beneficiary_not_in: [Bytes!]
+  beneficiary_contains: Bytes
+  beneficiary_not_contains: Bytes
+  lockedUntil: Int
+  lockedUntil_not: Int
+  lockedUntil_gt: Int
+  lockedUntil_lt: Int
+  lockedUntil_gte: Int
+  lockedUntil_lte: Int
+  lockedUntil_in: [Int!]
+  lockedUntil_not_in: [Int!]
+  allocator: Bytes
+  allocator_not: Bytes
+  allocator_in: [Bytes!]
+  allocator_not_in: [Bytes!]
+  allocator_contains: Bytes
+  allocator_not_contains: Bytes
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum DistributeToPayoutSplitEvent_orderBy {
+  id
+  project
+  projectId
+  timestamp
+  txHash
+  domain
+  group
+  amount
+  caller
+  distributePayoutsEvent
+  preferClaimed
+  preferAddToBalance
+  percent
+  splitProjectId
+  beneficiary
+  lockedUntil
+  allocator
+}
+
+type DistributeToReservedTokenSplitEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  timestamp: Int!
+  txHash: Bytes!
+  tokenCount: BigInt!
+  caller: Bytes!
+  distributeReservedTokensEvent: DistributeReservedTokensEvent!
+  preferClaimed: Boolean!
+  percent: Int!
+  splitProjectId: Int!
+  beneficiary: Bytes!
+  lockedUntil: Int!
+  allocator: Bytes!
+}
+
+input DistributeToReservedTokenSplitEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  tokenCount: BigInt
+  tokenCount_not: BigInt
+  tokenCount_gt: BigInt
+  tokenCount_lt: BigInt
+  tokenCount_gte: BigInt
+  tokenCount_lte: BigInt
+  tokenCount_in: [BigInt!]
+  tokenCount_not_in: [BigInt!]
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  distributeReservedTokensEvent: String
+  distributeReservedTokensEvent_not: String
+  distributeReservedTokensEvent_gt: String
+  distributeReservedTokensEvent_lt: String
+  distributeReservedTokensEvent_gte: String
+  distributeReservedTokensEvent_lte: String
+  distributeReservedTokensEvent_in: [String!]
+  distributeReservedTokensEvent_not_in: [String!]
+  distributeReservedTokensEvent_contains: String
+  distributeReservedTokensEvent_contains_nocase: String
+  distributeReservedTokensEvent_not_contains: String
+  distributeReservedTokensEvent_not_contains_nocase: String
+  distributeReservedTokensEvent_starts_with: String
+  distributeReservedTokensEvent_starts_with_nocase: String
+  distributeReservedTokensEvent_not_starts_with: String
+  distributeReservedTokensEvent_not_starts_with_nocase: String
+  distributeReservedTokensEvent_ends_with: String
+  distributeReservedTokensEvent_ends_with_nocase: String
+  distributeReservedTokensEvent_not_ends_with: String
+  distributeReservedTokensEvent_not_ends_with_nocase: String
+  distributeReservedTokensEvent_: DistributeReservedTokensEvent_filter
+  preferClaimed: Boolean
+  preferClaimed_not: Boolean
+  preferClaimed_in: [Boolean!]
+  preferClaimed_not_in: [Boolean!]
+  percent: Int
+  percent_not: Int
+  percent_gt: Int
+  percent_lt: Int
+  percent_gte: Int
+  percent_lte: Int
+  percent_in: [Int!]
+  percent_not_in: [Int!]
+  splitProjectId: Int
+  splitProjectId_not: Int
+  splitProjectId_gt: Int
+  splitProjectId_lt: Int
+  splitProjectId_gte: Int
+  splitProjectId_lte: Int
+  splitProjectId_in: [Int!]
+  splitProjectId_not_in: [Int!]
+  beneficiary: Bytes
+  beneficiary_not: Bytes
+  beneficiary_in: [Bytes!]
+  beneficiary_not_in: [Bytes!]
+  beneficiary_contains: Bytes
+  beneficiary_not_contains: Bytes
+  lockedUntil: Int
+  lockedUntil_not: Int
+  lockedUntil_gt: Int
+  lockedUntil_lt: Int
+  lockedUntil_gte: Int
+  lockedUntil_lte: Int
+  lockedUntil_in: [Int!]
+  lockedUntil_not_in: [Int!]
+  allocator: Bytes
+  allocator_not: Bytes
+  allocator_in: [Bytes!]
+  allocator_not_in: [Bytes!]
+  allocator_contains: Bytes
+  allocator_not_contains: Bytes
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum DistributeToReservedTokenSplitEvent_orderBy {
+  id
+  project
+  projectId
+  timestamp
+  txHash
+  tokenCount
+  caller
+  distributeReservedTokensEvent
+  preferClaimed
+  percent
+  splitProjectId
+  beneficiary
+  lockedUntil
+  allocator
+}
+
+type DistributeToTicketModEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  timestamp: Int!
+  txHash: Bytes!
+  fundingCycleId: BigInt!
+  modBeneficiary: Bytes!
+  modPreferUnstaked: Boolean!
+  modCut: BigInt!
+  caller: Bytes!
+  printReservesEvent: PrintReservesEvent!
+}
+
+input DistributeToTicketModEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  fundingCycleId: BigInt
+  fundingCycleId_not: BigInt
+  fundingCycleId_gt: BigInt
+  fundingCycleId_lt: BigInt
+  fundingCycleId_gte: BigInt
+  fundingCycleId_lte: BigInt
+  fundingCycleId_in: [BigInt!]
+  fundingCycleId_not_in: [BigInt!]
+  modBeneficiary: Bytes
+  modBeneficiary_not: Bytes
+  modBeneficiary_in: [Bytes!]
+  modBeneficiary_not_in: [Bytes!]
+  modBeneficiary_contains: Bytes
+  modBeneficiary_not_contains: Bytes
+  modPreferUnstaked: Boolean
+  modPreferUnstaked_not: Boolean
+  modPreferUnstaked_in: [Boolean!]
+  modPreferUnstaked_not_in: [Boolean!]
+  modCut: BigInt
+  modCut_not: BigInt
+  modCut_gt: BigInt
+  modCut_lt: BigInt
+  modCut_gte: BigInt
+  modCut_lte: BigInt
+  modCut_in: [BigInt!]
+  modCut_not_in: [BigInt!]
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  printReservesEvent: String
+  printReservesEvent_not: String
+  printReservesEvent_gt: String
+  printReservesEvent_lt: String
+  printReservesEvent_gte: String
+  printReservesEvent_lte: String
+  printReservesEvent_in: [String!]
+  printReservesEvent_not_in: [String!]
+  printReservesEvent_contains: String
+  printReservesEvent_contains_nocase: String
+  printReservesEvent_not_contains: String
+  printReservesEvent_not_contains_nocase: String
+  printReservesEvent_starts_with: String
+  printReservesEvent_starts_with_nocase: String
+  printReservesEvent_not_starts_with: String
+  printReservesEvent_not_starts_with_nocase: String
+  printReservesEvent_ends_with: String
+  printReservesEvent_ends_with_nocase: String
+  printReservesEvent_not_ends_with: String
+  printReservesEvent_not_ends_with_nocase: String
+  printReservesEvent_: PrintReservesEvent_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum DistributeToTicketModEvent_orderBy {
+  id
+  project
+  projectId
+  timestamp
+  txHash
+  fundingCycleId
+  modBeneficiary
+  modPreferUnstaked
+  modCut
+  caller
+  printReservesEvent
+}
+
+type ENSNode {
+  id: ID!
+  projectId: Int
+}
+
+input ENSNode_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum ENSNode_orderBy {
+  id
+  projectId
+}
+
+type ETHERC20ProjectPayer {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  address: Bytes!
+  beneficiary: Bytes!
+  preferClaimedTokens: Boolean!
+  preferAddToBalance: Boolean!
+  directory: Bytes!
+  owner: Bytes!
+  memo: String
+  metadata: Bytes
+}
+
+input ETHERC20ProjectPayer_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  address: Bytes
+  address_not: Bytes
+  address_in: [Bytes!]
+  address_not_in: [Bytes!]
+  address_contains: Bytes
+  address_not_contains: Bytes
+  beneficiary: Bytes
+  beneficiary_not: Bytes
+  beneficiary_in: [Bytes!]
+  beneficiary_not_in: [Bytes!]
+  beneficiary_contains: Bytes
+  beneficiary_not_contains: Bytes
+  preferClaimedTokens: Boolean
+  preferClaimedTokens_not: Boolean
+  preferClaimedTokens_in: [Boolean!]
+  preferClaimedTokens_not_in: [Boolean!]
+  preferAddToBalance: Boolean
+  preferAddToBalance_not: Boolean
+  preferAddToBalance_in: [Boolean!]
+  preferAddToBalance_not_in: [Boolean!]
+  directory: Bytes
+  directory_not: Bytes
+  directory_in: [Bytes!]
+  directory_not_in: [Bytes!]
+  directory_contains: Bytes
+  directory_not_contains: Bytes
+  owner: Bytes
+  owner_not: Bytes
+  owner_in: [Bytes!]
+  owner_not_in: [Bytes!]
+  owner_contains: Bytes
+  owner_not_contains: Bytes
+  memo: String
+  memo_not: String
+  memo_gt: String
+  memo_lt: String
+  memo_gte: String
+  memo_lte: String
+  memo_in: [String!]
+  memo_not_in: [String!]
+  memo_contains: String
+  memo_contains_nocase: String
+  memo_not_contains: String
+  memo_not_contains_nocase: String
+  memo_starts_with: String
+  memo_starts_with_nocase: String
+  memo_not_starts_with: String
+  memo_not_starts_with_nocase: String
+  memo_ends_with: String
+  memo_ends_with_nocase: String
+  memo_not_ends_with: String
+  memo_not_ends_with_nocase: String
+  metadata: Bytes
+  metadata_not: Bytes
+  metadata_in: [Bytes!]
+  metadata_not_in: [Bytes!]
+  metadata_contains: Bytes
+  metadata_not_contains: Bytes
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum ETHERC20ProjectPayer_orderBy {
+  id
+  project
+  projectId
+  address
+  beneficiary
+  preferClaimedTokens
+  preferAddToBalance
+  directory
+  owner
+  memo
+  metadata
+}
+
+type MintTokensEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  cv: String!
+  timestamp: Int!
+  txHash: Bytes!
+  beneficiary: Bytes!
+  amount: BigInt!
+  memo: String!
+  caller: Bytes!
+}
+
+input MintTokensEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  cv: String
+  cv_not: String
+  cv_gt: String
+  cv_lt: String
+  cv_gte: String
+  cv_lte: String
+  cv_in: [String!]
+  cv_not_in: [String!]
+  cv_contains: String
+  cv_contains_nocase: String
+  cv_not_contains: String
+  cv_not_contains_nocase: String
+  cv_starts_with: String
+  cv_starts_with_nocase: String
+  cv_not_starts_with: String
+  cv_not_starts_with_nocase: String
+  cv_ends_with: String
+  cv_ends_with_nocase: String
+  cv_not_ends_with: String
+  cv_not_ends_with_nocase: String
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  beneficiary: Bytes
+  beneficiary_not: Bytes
+  beneficiary_in: [Bytes!]
+  beneficiary_not_in: [Bytes!]
+  beneficiary_contains: Bytes
+  beneficiary_not_contains: Bytes
+  amount: BigInt
+  amount_not: BigInt
+  amount_gt: BigInt
+  amount_lt: BigInt
+  amount_gte: BigInt
+  amount_lte: BigInt
+  amount_in: [BigInt!]
+  amount_not_in: [BigInt!]
+  memo: String
+  memo_not: String
+  memo_gt: String
+  memo_lt: String
+  memo_gte: String
+  memo_lte: String
+  memo_in: [String!]
+  memo_not_in: [String!]
+  memo_contains: String
+  memo_contains_nocase: String
+  memo_not_contains: String
+  memo_not_contains_nocase: String
+  memo_starts_with: String
+  memo_starts_with_nocase: String
+  memo_not_starts_with: String
+  memo_not_starts_with_nocase: String
+  memo_ends_with: String
+  memo_ends_with_nocase: String
+  memo_not_ends_with: String
+  memo_not_ends_with_nocase: String
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum MintTokensEvent_orderBy {
+  id
+  project
+  projectId
+  cv
+  timestamp
+  txHash
+  beneficiary
+  amount
+  memo
+  caller
+}
+
+"""Defines the order direction, either ascending or descending"""
+enum OrderDirection {
+  asc
+  desc
+}
+
+type Participant {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  cv: String!
+  wallet: Bytes!
+  totalPaid: BigInt!
+  lastPaidTimestamp: Int!
+  balance: BigInt!
+  stakedBalance: BigInt!
+  unstakedBalance: BigInt!
+}
+
+input Participant_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  cv: String
+  cv_not: String
+  cv_gt: String
+  cv_lt: String
+  cv_gte: String
+  cv_lte: String
+  cv_in: [String!]
+  cv_not_in: [String!]
+  cv_contains: String
+  cv_contains_nocase: String
+  cv_not_contains: String
+  cv_not_contains_nocase: String
+  cv_starts_with: String
+  cv_starts_with_nocase: String
+  cv_not_starts_with: String
+  cv_not_starts_with_nocase: String
+  cv_ends_with: String
+  cv_ends_with_nocase: String
+  cv_not_ends_with: String
+  cv_not_ends_with_nocase: String
+  wallet: Bytes
+  wallet_not: Bytes
+  wallet_in: [Bytes!]
+  wallet_not_in: [Bytes!]
+  wallet_contains: Bytes
+  wallet_not_contains: Bytes
+  totalPaid: BigInt
+  totalPaid_not: BigInt
+  totalPaid_gt: BigInt
+  totalPaid_lt: BigInt
+  totalPaid_gte: BigInt
+  totalPaid_lte: BigInt
+  totalPaid_in: [BigInt!]
+  totalPaid_not_in: [BigInt!]
+  lastPaidTimestamp: Int
+  lastPaidTimestamp_not: Int
+  lastPaidTimestamp_gt: Int
+  lastPaidTimestamp_lt: Int
+  lastPaidTimestamp_gte: Int
+  lastPaidTimestamp_lte: Int
+  lastPaidTimestamp_in: [Int!]
+  lastPaidTimestamp_not_in: [Int!]
+  balance: BigInt
+  balance_not: BigInt
+  balance_gt: BigInt
+  balance_lt: BigInt
+  balance_gte: BigInt
+  balance_lte: BigInt
+  balance_in: [BigInt!]
+  balance_not_in: [BigInt!]
+  stakedBalance: BigInt
+  stakedBalance_not: BigInt
+  stakedBalance_gt: BigInt
+  stakedBalance_lt: BigInt
+  stakedBalance_gte: BigInt
+  stakedBalance_lte: BigInt
+  stakedBalance_in: [BigInt!]
+  stakedBalance_not_in: [BigInt!]
+  unstakedBalance: BigInt
+  unstakedBalance_not: BigInt
+  unstakedBalance_gt: BigInt
+  unstakedBalance_lt: BigInt
+  unstakedBalance_gte: BigInt
+  unstakedBalance_lte: BigInt
+  unstakedBalance_in: [BigInt!]
+  unstakedBalance_not_in: [BigInt!]
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum Participant_orderBy {
+  id
+  project
+  projectId
+  cv
+  wallet
+  totalPaid
+  lastPaidTimestamp
+  balance
+  stakedBalance
+  unstakedBalance
+}
+
+type PayEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  cv: String!
+  timestamp: Int!
+  txHash: Bytes!
+  caller: Bytes!
+  beneficiary: Bytes!
+  amount: BigInt!
+  note: String!
+  feeFromV2Project: Int
+}
+
+input PayEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  cv: String
+  cv_not: String
+  cv_gt: String
+  cv_lt: String
+  cv_gte: String
+  cv_lte: String
+  cv_in: [String!]
+  cv_not_in: [String!]
+  cv_contains: String
+  cv_contains_nocase: String
+  cv_not_contains: String
+  cv_not_contains_nocase: String
+  cv_starts_with: String
+  cv_starts_with_nocase: String
+  cv_not_starts_with: String
+  cv_not_starts_with_nocase: String
+  cv_ends_with: String
+  cv_ends_with_nocase: String
+  cv_not_ends_with: String
+  cv_not_ends_with_nocase: String
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  beneficiary: Bytes
+  beneficiary_not: Bytes
+  beneficiary_in: [Bytes!]
+  beneficiary_not_in: [Bytes!]
+  beneficiary_contains: Bytes
+  beneficiary_not_contains: Bytes
+  amount: BigInt
+  amount_not: BigInt
+  amount_gt: BigInt
+  amount_lt: BigInt
+  amount_gte: BigInt
+  amount_lte: BigInt
+  amount_in: [BigInt!]
+  amount_not_in: [BigInt!]
+  note: String
+  note_not: String
+  note_gt: String
+  note_lt: String
+  note_gte: String
+  note_lte: String
+  note_in: [String!]
+  note_not_in: [String!]
+  note_contains: String
+  note_contains_nocase: String
+  note_not_contains: String
+  note_not_contains_nocase: String
+  note_starts_with: String
+  note_starts_with_nocase: String
+  note_not_starts_with: String
+  note_not_starts_with_nocase: String
+  note_ends_with: String
+  note_ends_with_nocase: String
+  note_not_ends_with: String
+  note_not_ends_with_nocase: String
+  feeFromV2Project: Int
+  feeFromV2Project_not: Int
+  feeFromV2Project_gt: Int
+  feeFromV2Project_lt: Int
+  feeFromV2Project_gte: Int
+  feeFromV2Project_lte: Int
+  feeFromV2Project_in: [Int!]
+  feeFromV2Project_not_in: [Int!]
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum PayEvent_orderBy {
+  id
+  project
+  projectId
+  cv
+  timestamp
+  txHash
+  caller
+  beneficiary
+  amount
+  note
+  feeFromV2Project
+}
+
+type PrintReservesEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  timestamp: Int!
+  txHash: Bytes!
+  fundingCycleId: BigInt!
+  beneficiary: Bytes!
+  count: BigInt!
+  beneficiaryTicketAmount: BigInt!
+  caller: Bytes!
+  distributions(skip: Int = 0, first: Int = 100, orderBy: DistributeToTicketModEvent_orderBy, orderDirection: OrderDirection, where: DistributeToTicketModEvent_filter): [DistributeToTicketModEvent!]!
+}
+
+input PrintReservesEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  fundingCycleId: BigInt
+  fundingCycleId_not: BigInt
+  fundingCycleId_gt: BigInt
+  fundingCycleId_lt: BigInt
+  fundingCycleId_gte: BigInt
+  fundingCycleId_lte: BigInt
+  fundingCycleId_in: [BigInt!]
+  fundingCycleId_not_in: [BigInt!]
+  beneficiary: Bytes
+  beneficiary_not: Bytes
+  beneficiary_in: [Bytes!]
+  beneficiary_not_in: [Bytes!]
+  beneficiary_contains: Bytes
+  beneficiary_not_contains: Bytes
+  count: BigInt
+  count_not: BigInt
+  count_gt: BigInt
+  count_lt: BigInt
+  count_gte: BigInt
+  count_lte: BigInt
+  count_in: [BigInt!]
+  count_not_in: [BigInt!]
+  beneficiaryTicketAmount: BigInt
+  beneficiaryTicketAmount_not: BigInt
+  beneficiaryTicketAmount_gt: BigInt
+  beneficiaryTicketAmount_lt: BigInt
+  beneficiaryTicketAmount_gte: BigInt
+  beneficiaryTicketAmount_lte: BigInt
+  beneficiaryTicketAmount_in: [BigInt!]
+  beneficiaryTicketAmount_not_in: [BigInt!]
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  distributions_: DistributeToTicketModEvent_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum PrintReservesEvent_orderBy {
+  id
+  project
+  projectId
+  timestamp
+  txHash
+  fundingCycleId
+  beneficiary
+  count
+  beneficiaryTicketAmount
+  caller
+  distributions
+}
+
+type Project {
+  id: ID!
+  projectId: Int!
+  cv: String!
+  handle: String
+  metadataUri: String
+  metadataDomain: BigInt
+  terminal: Bytes
+  owner: Bytes!
+  createdAt: Int!
+  totalPaid: BigInt!
+  totalRedeemed: BigInt!
+  currentBalance: BigInt!
+  trendingScore: BigInt!
+  trendingVolume: BigInt!
+  trendingPaymentsCount: Int!
+  createdWithinTrendingWindow: Boolean!
+  participants(skip: Int = 0, first: Int = 100, orderBy: Participant_orderBy, orderDirection: OrderDirection, where: Participant_filter): [Participant!]!
+  payEvents(skip: Int = 0, first: Int = 100, orderBy: PayEvent_orderBy, orderDirection: OrderDirection, where: PayEvent_filter): [PayEvent!]!
+  mintTokensEvents(skip: Int = 0, first: Int = 100, orderBy: MintTokensEvent_orderBy, orderDirection: OrderDirection, where: MintTokensEvent_filter): [MintTokensEvent!]!
+  tapEvents(skip: Int = 0, first: Int = 100, orderBy: TapEvent_orderBy, orderDirection: OrderDirection, where: TapEvent_filter): [TapEvent!]!
+  redeemEvents(skip: Int = 0, first: Int = 100, orderBy: RedeemEvent_orderBy, orderDirection: OrderDirection, where: RedeemEvent_filter): [RedeemEvent!]!
+  printReservesEvents(skip: Int = 0, first: Int = 100, orderBy: PrintReservesEvent_orderBy, orderDirection: OrderDirection, where: PrintReservesEvent_filter): [PrintReservesEvent!]!
+  distributeToPayoutModEvents(skip: Int = 0, first: Int = 100, orderBy: DistributeToPayoutModEvent_orderBy, orderDirection: OrderDirection, where: DistributeToPayoutModEvent_filter): [DistributeToPayoutModEvent!]!
+  distributeToTicketModEvents(skip: Int = 0, first: Int = 100, orderBy: DistributeToTicketModEvent_orderBy, orderDirection: OrderDirection, where: DistributeToTicketModEvent_filter): [DistributeToTicketModEvent!]!
+  deployedERC20s(skip: Int = 0, first: Int = 100, orderBy: DeployedERC20Event_orderBy, orderDirection: OrderDirection, where: DeployedERC20Event_filter): [DeployedERC20Event!]!
+  distributePayoutsEvents(skip: Int = 0, first: Int = 100, orderBy: DistributePayoutsEvent_orderBy, orderDirection: OrderDirection, where: DistributePayoutsEvent_filter): [DistributePayoutsEvent!]!
+  distributeToPayoutSplitEvents(skip: Int = 0, first: Int = 100, orderBy: DistributeToPayoutSplitEvent_orderBy, orderDirection: OrderDirection, where: DistributeToPayoutSplitEvent_filter): [DistributeToPayoutSplitEvent!]!
+  distributeReservedTokensEvents(skip: Int = 0, first: Int = 100, orderBy: DistributeReservedTokensEvent_orderBy, orderDirection: OrderDirection, where: DistributeReservedTokensEvent_filter): [DistributeReservedTokensEvent!]!
+  distributeToReservedTokenSplitEvents(skip: Int = 0, first: Int = 100, orderBy: DistributeToReservedTokenSplitEvent_orderBy, orderDirection: OrderDirection, where: DistributeToReservedTokenSplitEvent_filter): [DistributeToReservedTokenSplitEvent!]!
+  deployedERC20Events(skip: Int = 0, first: Int = 100, orderBy: DeployedERC20Event_orderBy, orderDirection: OrderDirection, where: DeployedERC20Event_filter): [DeployedERC20Event!]!
+  useAllowanceEvents(skip: Int = 0, first: Int = 100, orderBy: UseAllowanceEvent_orderBy, orderDirection: OrderDirection, where: UseAllowanceEvent_filter): [UseAllowanceEvent!]!
+  projectEvents(skip: Int = 0, first: Int = 100, orderBy: ProjectEvent_orderBy, orderDirection: OrderDirection, where: ProjectEvent_filter): [ProjectEvent!]!
+  ethErc20ProjectPayers(skip: Int = 0, first: Int = 100, orderBy: ETHERC20ProjectPayer_orderBy, orderDirection: OrderDirection, where: ETHERC20ProjectPayer_filter): [ETHERC20ProjectPayer!]!
+}
+
+type ProjectCreateEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  cv: String!
+  timestamp: Int!
+  txHash: Bytes!
+  caller: Bytes!
+}
+
+input ProjectCreateEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  cv: String
+  cv_not: String
+  cv_gt: String
+  cv_lt: String
+  cv_gte: String
+  cv_lte: String
+  cv_in: [String!]
+  cv_not_in: [String!]
+  cv_contains: String
+  cv_contains_nocase: String
+  cv_not_contains: String
+  cv_not_contains_nocase: String
+  cv_starts_with: String
+  cv_starts_with_nocase: String
+  cv_not_starts_with: String
+  cv_not_starts_with_nocase: String
+  cv_ends_with: String
+  cv_ends_with_nocase: String
+  cv_not_ends_with: String
+  cv_not_ends_with_nocase: String
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum ProjectCreateEvent_orderBy {
+  id
+  project
+  projectId
+  cv
+  timestamp
+  txHash
+  caller
+}
+
+type ProjectEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  cv: String!
+  timestamp: Int!
+  payEvent: PayEvent
+  mintTokensEvent: MintTokensEvent
+  tapEvent: TapEvent
+  redeemEvent: RedeemEvent
+  printReservesEvent: PrintReservesEvent
+  distributeToPayoutModEvent: DistributeToPayoutModEvent
+  distributeToTicketModEvent: DistributeToTicketModEvent
+  deployedERC20Event: DeployedERC20Event
+  projectCreateEvent: ProjectCreateEvent
+  distributePayoutsEvent: DistributePayoutsEvent
+  distributeReservedTokensEvent: DistributeReservedTokensEvent
+  distributeToReservedTokenSplitEvent: DistributeToReservedTokenSplitEvent
+  distributeToPayoutSplitEvent: DistributeToPayoutSplitEvent
+  useAllowanceEvent: UseAllowanceEvent
+  deployETHERC20ProjectPayerEvent: DeployETHERC20ProjectPayerEvent
+}
+
+input ProjectEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  cv: String
+  cv_not: String
+  cv_gt: String
+  cv_lt: String
+  cv_gte: String
+  cv_lte: String
+  cv_in: [String!]
+  cv_not_in: [String!]
+  cv_contains: String
+  cv_contains_nocase: String
+  cv_not_contains: String
+  cv_not_contains_nocase: String
+  cv_starts_with: String
+  cv_starts_with_nocase: String
+  cv_not_starts_with: String
+  cv_not_starts_with_nocase: String
+  cv_ends_with: String
+  cv_ends_with_nocase: String
+  cv_not_ends_with: String
+  cv_not_ends_with_nocase: String
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  payEvent: String
+  payEvent_not: String
+  payEvent_gt: String
+  payEvent_lt: String
+  payEvent_gte: String
+  payEvent_lte: String
+  payEvent_in: [String!]
+  payEvent_not_in: [String!]
+  payEvent_contains: String
+  payEvent_contains_nocase: String
+  payEvent_not_contains: String
+  payEvent_not_contains_nocase: String
+  payEvent_starts_with: String
+  payEvent_starts_with_nocase: String
+  payEvent_not_starts_with: String
+  payEvent_not_starts_with_nocase: String
+  payEvent_ends_with: String
+  payEvent_ends_with_nocase: String
+  payEvent_not_ends_with: String
+  payEvent_not_ends_with_nocase: String
+  payEvent_: PayEvent_filter
+  mintTokensEvent: String
+  mintTokensEvent_not: String
+  mintTokensEvent_gt: String
+  mintTokensEvent_lt: String
+  mintTokensEvent_gte: String
+  mintTokensEvent_lte: String
+  mintTokensEvent_in: [String!]
+  mintTokensEvent_not_in: [String!]
+  mintTokensEvent_contains: String
+  mintTokensEvent_contains_nocase: String
+  mintTokensEvent_not_contains: String
+  mintTokensEvent_not_contains_nocase: String
+  mintTokensEvent_starts_with: String
+  mintTokensEvent_starts_with_nocase: String
+  mintTokensEvent_not_starts_with: String
+  mintTokensEvent_not_starts_with_nocase: String
+  mintTokensEvent_ends_with: String
+  mintTokensEvent_ends_with_nocase: String
+  mintTokensEvent_not_ends_with: String
+  mintTokensEvent_not_ends_with_nocase: String
+  mintTokensEvent_: MintTokensEvent_filter
+  tapEvent: String
+  tapEvent_not: String
+  tapEvent_gt: String
+  tapEvent_lt: String
+  tapEvent_gte: String
+  tapEvent_lte: String
+  tapEvent_in: [String!]
+  tapEvent_not_in: [String!]
+  tapEvent_contains: String
+  tapEvent_contains_nocase: String
+  tapEvent_not_contains: String
+  tapEvent_not_contains_nocase: String
+  tapEvent_starts_with: String
+  tapEvent_starts_with_nocase: String
+  tapEvent_not_starts_with: String
+  tapEvent_not_starts_with_nocase: String
+  tapEvent_ends_with: String
+  tapEvent_ends_with_nocase: String
+  tapEvent_not_ends_with: String
+  tapEvent_not_ends_with_nocase: String
+  tapEvent_: TapEvent_filter
+  redeemEvent: String
+  redeemEvent_not: String
+  redeemEvent_gt: String
+  redeemEvent_lt: String
+  redeemEvent_gte: String
+  redeemEvent_lte: String
+  redeemEvent_in: [String!]
+  redeemEvent_not_in: [String!]
+  redeemEvent_contains: String
+  redeemEvent_contains_nocase: String
+  redeemEvent_not_contains: String
+  redeemEvent_not_contains_nocase: String
+  redeemEvent_starts_with: String
+  redeemEvent_starts_with_nocase: String
+  redeemEvent_not_starts_with: String
+  redeemEvent_not_starts_with_nocase: String
+  redeemEvent_ends_with: String
+  redeemEvent_ends_with_nocase: String
+  redeemEvent_not_ends_with: String
+  redeemEvent_not_ends_with_nocase: String
+  redeemEvent_: RedeemEvent_filter
+  printReservesEvent: String
+  printReservesEvent_not: String
+  printReservesEvent_gt: String
+  printReservesEvent_lt: String
+  printReservesEvent_gte: String
+  printReservesEvent_lte: String
+  printReservesEvent_in: [String!]
+  printReservesEvent_not_in: [String!]
+  printReservesEvent_contains: String
+  printReservesEvent_contains_nocase: String
+  printReservesEvent_not_contains: String
+  printReservesEvent_not_contains_nocase: String
+  printReservesEvent_starts_with: String
+  printReservesEvent_starts_with_nocase: String
+  printReservesEvent_not_starts_with: String
+  printReservesEvent_not_starts_with_nocase: String
+  printReservesEvent_ends_with: String
+  printReservesEvent_ends_with_nocase: String
+  printReservesEvent_not_ends_with: String
+  printReservesEvent_not_ends_with_nocase: String
+  printReservesEvent_: PrintReservesEvent_filter
+  distributeToPayoutModEvent: String
+  distributeToPayoutModEvent_not: String
+  distributeToPayoutModEvent_gt: String
+  distributeToPayoutModEvent_lt: String
+  distributeToPayoutModEvent_gte: String
+  distributeToPayoutModEvent_lte: String
+  distributeToPayoutModEvent_in: [String!]
+  distributeToPayoutModEvent_not_in: [String!]
+  distributeToPayoutModEvent_contains: String
+  distributeToPayoutModEvent_contains_nocase: String
+  distributeToPayoutModEvent_not_contains: String
+  distributeToPayoutModEvent_not_contains_nocase: String
+  distributeToPayoutModEvent_starts_with: String
+  distributeToPayoutModEvent_starts_with_nocase: String
+  distributeToPayoutModEvent_not_starts_with: String
+  distributeToPayoutModEvent_not_starts_with_nocase: String
+  distributeToPayoutModEvent_ends_with: String
+  distributeToPayoutModEvent_ends_with_nocase: String
+  distributeToPayoutModEvent_not_ends_with: String
+  distributeToPayoutModEvent_not_ends_with_nocase: String
+  distributeToPayoutModEvent_: DistributeToPayoutModEvent_filter
+  distributeToTicketModEvent: String
+  distributeToTicketModEvent_not: String
+  distributeToTicketModEvent_gt: String
+  distributeToTicketModEvent_lt: String
+  distributeToTicketModEvent_gte: String
+  distributeToTicketModEvent_lte: String
+  distributeToTicketModEvent_in: [String!]
+  distributeToTicketModEvent_not_in: [String!]
+  distributeToTicketModEvent_contains: String
+  distributeToTicketModEvent_contains_nocase: String
+  distributeToTicketModEvent_not_contains: String
+  distributeToTicketModEvent_not_contains_nocase: String
+  distributeToTicketModEvent_starts_with: String
+  distributeToTicketModEvent_starts_with_nocase: String
+  distributeToTicketModEvent_not_starts_with: String
+  distributeToTicketModEvent_not_starts_with_nocase: String
+  distributeToTicketModEvent_ends_with: String
+  distributeToTicketModEvent_ends_with_nocase: String
+  distributeToTicketModEvent_not_ends_with: String
+  distributeToTicketModEvent_not_ends_with_nocase: String
+  distributeToTicketModEvent_: DistributeToTicketModEvent_filter
+  deployedERC20Event: String
+  deployedERC20Event_not: String
+  deployedERC20Event_gt: String
+  deployedERC20Event_lt: String
+  deployedERC20Event_gte: String
+  deployedERC20Event_lte: String
+  deployedERC20Event_in: [String!]
+  deployedERC20Event_not_in: [String!]
+  deployedERC20Event_contains: String
+  deployedERC20Event_contains_nocase: String
+  deployedERC20Event_not_contains: String
+  deployedERC20Event_not_contains_nocase: String
+  deployedERC20Event_starts_with: String
+  deployedERC20Event_starts_with_nocase: String
+  deployedERC20Event_not_starts_with: String
+  deployedERC20Event_not_starts_with_nocase: String
+  deployedERC20Event_ends_with: String
+  deployedERC20Event_ends_with_nocase: String
+  deployedERC20Event_not_ends_with: String
+  deployedERC20Event_not_ends_with_nocase: String
+  deployedERC20Event_: DeployedERC20Event_filter
+  projectCreateEvent: String
+  projectCreateEvent_not: String
+  projectCreateEvent_gt: String
+  projectCreateEvent_lt: String
+  projectCreateEvent_gte: String
+  projectCreateEvent_lte: String
+  projectCreateEvent_in: [String!]
+  projectCreateEvent_not_in: [String!]
+  projectCreateEvent_contains: String
+  projectCreateEvent_contains_nocase: String
+  projectCreateEvent_not_contains: String
+  projectCreateEvent_not_contains_nocase: String
+  projectCreateEvent_starts_with: String
+  projectCreateEvent_starts_with_nocase: String
+  projectCreateEvent_not_starts_with: String
+  projectCreateEvent_not_starts_with_nocase: String
+  projectCreateEvent_ends_with: String
+  projectCreateEvent_ends_with_nocase: String
+  projectCreateEvent_not_ends_with: String
+  projectCreateEvent_not_ends_with_nocase: String
+  projectCreateEvent_: ProjectCreateEvent_filter
+  distributePayoutsEvent: String
+  distributePayoutsEvent_not: String
+  distributePayoutsEvent_gt: String
+  distributePayoutsEvent_lt: String
+  distributePayoutsEvent_gte: String
+  distributePayoutsEvent_lte: String
+  distributePayoutsEvent_in: [String!]
+  distributePayoutsEvent_not_in: [String!]
+  distributePayoutsEvent_contains: String
+  distributePayoutsEvent_contains_nocase: String
+  distributePayoutsEvent_not_contains: String
+  distributePayoutsEvent_not_contains_nocase: String
+  distributePayoutsEvent_starts_with: String
+  distributePayoutsEvent_starts_with_nocase: String
+  distributePayoutsEvent_not_starts_with: String
+  distributePayoutsEvent_not_starts_with_nocase: String
+  distributePayoutsEvent_ends_with: String
+  distributePayoutsEvent_ends_with_nocase: String
+  distributePayoutsEvent_not_ends_with: String
+  distributePayoutsEvent_not_ends_with_nocase: String
+  distributePayoutsEvent_: DistributePayoutsEvent_filter
+  distributeReservedTokensEvent: String
+  distributeReservedTokensEvent_not: String
+  distributeReservedTokensEvent_gt: String
+  distributeReservedTokensEvent_lt: String
+  distributeReservedTokensEvent_gte: String
+  distributeReservedTokensEvent_lte: String
+  distributeReservedTokensEvent_in: [String!]
+  distributeReservedTokensEvent_not_in: [String!]
+  distributeReservedTokensEvent_contains: String
+  distributeReservedTokensEvent_contains_nocase: String
+  distributeReservedTokensEvent_not_contains: String
+  distributeReservedTokensEvent_not_contains_nocase: String
+  distributeReservedTokensEvent_starts_with: String
+  distributeReservedTokensEvent_starts_with_nocase: String
+  distributeReservedTokensEvent_not_starts_with: String
+  distributeReservedTokensEvent_not_starts_with_nocase: String
+  distributeReservedTokensEvent_ends_with: String
+  distributeReservedTokensEvent_ends_with_nocase: String
+  distributeReservedTokensEvent_not_ends_with: String
+  distributeReservedTokensEvent_not_ends_with_nocase: String
+  distributeReservedTokensEvent_: DistributeReservedTokensEvent_filter
+  distributeToReservedTokenSplitEvent: String
+  distributeToReservedTokenSplitEvent_not: String
+  distributeToReservedTokenSplitEvent_gt: String
+  distributeToReservedTokenSplitEvent_lt: String
+  distributeToReservedTokenSplitEvent_gte: String
+  distributeToReservedTokenSplitEvent_lte: String
+  distributeToReservedTokenSplitEvent_in: [String!]
+  distributeToReservedTokenSplitEvent_not_in: [String!]
+  distributeToReservedTokenSplitEvent_contains: String
+  distributeToReservedTokenSplitEvent_contains_nocase: String
+  distributeToReservedTokenSplitEvent_not_contains: String
+  distributeToReservedTokenSplitEvent_not_contains_nocase: String
+  distributeToReservedTokenSplitEvent_starts_with: String
+  distributeToReservedTokenSplitEvent_starts_with_nocase: String
+  distributeToReservedTokenSplitEvent_not_starts_with: String
+  distributeToReservedTokenSplitEvent_not_starts_with_nocase: String
+  distributeToReservedTokenSplitEvent_ends_with: String
+  distributeToReservedTokenSplitEvent_ends_with_nocase: String
+  distributeToReservedTokenSplitEvent_not_ends_with: String
+  distributeToReservedTokenSplitEvent_not_ends_with_nocase: String
+  distributeToReservedTokenSplitEvent_: DistributeToReservedTokenSplitEvent_filter
+  distributeToPayoutSplitEvent: String
+  distributeToPayoutSplitEvent_not: String
+  distributeToPayoutSplitEvent_gt: String
+  distributeToPayoutSplitEvent_lt: String
+  distributeToPayoutSplitEvent_gte: String
+  distributeToPayoutSplitEvent_lte: String
+  distributeToPayoutSplitEvent_in: [String!]
+  distributeToPayoutSplitEvent_not_in: [String!]
+  distributeToPayoutSplitEvent_contains: String
+  distributeToPayoutSplitEvent_contains_nocase: String
+  distributeToPayoutSplitEvent_not_contains: String
+  distributeToPayoutSplitEvent_not_contains_nocase: String
+  distributeToPayoutSplitEvent_starts_with: String
+  distributeToPayoutSplitEvent_starts_with_nocase: String
+  distributeToPayoutSplitEvent_not_starts_with: String
+  distributeToPayoutSplitEvent_not_starts_with_nocase: String
+  distributeToPayoutSplitEvent_ends_with: String
+  distributeToPayoutSplitEvent_ends_with_nocase: String
+  distributeToPayoutSplitEvent_not_ends_with: String
+  distributeToPayoutSplitEvent_not_ends_with_nocase: String
+  distributeToPayoutSplitEvent_: DistributeToPayoutSplitEvent_filter
+  useAllowanceEvent: String
+  useAllowanceEvent_not: String
+  useAllowanceEvent_gt: String
+  useAllowanceEvent_lt: String
+  useAllowanceEvent_gte: String
+  useAllowanceEvent_lte: String
+  useAllowanceEvent_in: [String!]
+  useAllowanceEvent_not_in: [String!]
+  useAllowanceEvent_contains: String
+  useAllowanceEvent_contains_nocase: String
+  useAllowanceEvent_not_contains: String
+  useAllowanceEvent_not_contains_nocase: String
+  useAllowanceEvent_starts_with: String
+  useAllowanceEvent_starts_with_nocase: String
+  useAllowanceEvent_not_starts_with: String
+  useAllowanceEvent_not_starts_with_nocase: String
+  useAllowanceEvent_ends_with: String
+  useAllowanceEvent_ends_with_nocase: String
+  useAllowanceEvent_not_ends_with: String
+  useAllowanceEvent_not_ends_with_nocase: String
+  useAllowanceEvent_: UseAllowanceEvent_filter
+  deployETHERC20ProjectPayerEvent: String
+  deployETHERC20ProjectPayerEvent_not: String
+  deployETHERC20ProjectPayerEvent_gt: String
+  deployETHERC20ProjectPayerEvent_lt: String
+  deployETHERC20ProjectPayerEvent_gte: String
+  deployETHERC20ProjectPayerEvent_lte: String
+  deployETHERC20ProjectPayerEvent_in: [String!]
+  deployETHERC20ProjectPayerEvent_not_in: [String!]
+  deployETHERC20ProjectPayerEvent_contains: String
+  deployETHERC20ProjectPayerEvent_contains_nocase: String
+  deployETHERC20ProjectPayerEvent_not_contains: String
+  deployETHERC20ProjectPayerEvent_not_contains_nocase: String
+  deployETHERC20ProjectPayerEvent_starts_with: String
+  deployETHERC20ProjectPayerEvent_starts_with_nocase: String
+  deployETHERC20ProjectPayerEvent_not_starts_with: String
+  deployETHERC20ProjectPayerEvent_not_starts_with_nocase: String
+  deployETHERC20ProjectPayerEvent_ends_with: String
+  deployETHERC20ProjectPayerEvent_ends_with_nocase: String
+  deployETHERC20ProjectPayerEvent_not_ends_with: String
+  deployETHERC20ProjectPayerEvent_not_ends_with_nocase: String
+  deployETHERC20ProjectPayerEvent_: DeployETHERC20ProjectPayerEvent_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum ProjectEvent_orderBy {
+  id
+  project
+  projectId
+  cv
+  timestamp
+  payEvent
+  mintTokensEvent
+  tapEvent
+  redeemEvent
+  printReservesEvent
+  distributeToPayoutModEvent
+  distributeToTicketModEvent
+  deployedERC20Event
+  projectCreateEvent
+  distributePayoutsEvent
+  distributeReservedTokensEvent
+  distributeToReservedTokenSplitEvent
+  distributeToPayoutSplitEvent
+  useAllowanceEvent
+  deployETHERC20ProjectPayerEvent
+}
+
+input Project_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  cv: String
+  cv_not: String
+  cv_gt: String
+  cv_lt: String
+  cv_gte: String
+  cv_lte: String
+  cv_in: [String!]
+  cv_not_in: [String!]
+  cv_contains: String
+  cv_contains_nocase: String
+  cv_not_contains: String
+  cv_not_contains_nocase: String
+  cv_starts_with: String
+  cv_starts_with_nocase: String
+  cv_not_starts_with: String
+  cv_not_starts_with_nocase: String
+  cv_ends_with: String
+  cv_ends_with_nocase: String
+  cv_not_ends_with: String
+  cv_not_ends_with_nocase: String
+  handle: String
+  handle_not: String
+  handle_gt: String
+  handle_lt: String
+  handle_gte: String
+  handle_lte: String
+  handle_in: [String!]
+  handle_not_in: [String!]
+  handle_contains: String
+  handle_contains_nocase: String
+  handle_not_contains: String
+  handle_not_contains_nocase: String
+  handle_starts_with: String
+  handle_starts_with_nocase: String
+  handle_not_starts_with: String
+  handle_not_starts_with_nocase: String
+  handle_ends_with: String
+  handle_ends_with_nocase: String
+  handle_not_ends_with: String
+  handle_not_ends_with_nocase: String
+  metadataUri: String
+  metadataUri_not: String
+  metadataUri_gt: String
+  metadataUri_lt: String
+  metadataUri_gte: String
+  metadataUri_lte: String
+  metadataUri_in: [String!]
+  metadataUri_not_in: [String!]
+  metadataUri_contains: String
+  metadataUri_contains_nocase: String
+  metadataUri_not_contains: String
+  metadataUri_not_contains_nocase: String
+  metadataUri_starts_with: String
+  metadataUri_starts_with_nocase: String
+  metadataUri_not_starts_with: String
+  metadataUri_not_starts_with_nocase: String
+  metadataUri_ends_with: String
+  metadataUri_ends_with_nocase: String
+  metadataUri_not_ends_with: String
+  metadataUri_not_ends_with_nocase: String
+  metadataDomain: BigInt
+  metadataDomain_not: BigInt
+  metadataDomain_gt: BigInt
+  metadataDomain_lt: BigInt
+  metadataDomain_gte: BigInt
+  metadataDomain_lte: BigInt
+  metadataDomain_in: [BigInt!]
+  metadataDomain_not_in: [BigInt!]
+  terminal: Bytes
+  terminal_not: Bytes
+  terminal_in: [Bytes!]
+  terminal_not_in: [Bytes!]
+  terminal_contains: Bytes
+  terminal_not_contains: Bytes
+  owner: Bytes
+  owner_not: Bytes
+  owner_in: [Bytes!]
+  owner_not_in: [Bytes!]
+  owner_contains: Bytes
+  owner_not_contains: Bytes
+  createdAt: Int
+  createdAt_not: Int
+  createdAt_gt: Int
+  createdAt_lt: Int
+  createdAt_gte: Int
+  createdAt_lte: Int
+  createdAt_in: [Int!]
+  createdAt_not_in: [Int!]
+  totalPaid: BigInt
+  totalPaid_not: BigInt
+  totalPaid_gt: BigInt
+  totalPaid_lt: BigInt
+  totalPaid_gte: BigInt
+  totalPaid_lte: BigInt
+  totalPaid_in: [BigInt!]
+  totalPaid_not_in: [BigInt!]
+  totalRedeemed: BigInt
+  totalRedeemed_not: BigInt
+  totalRedeemed_gt: BigInt
+  totalRedeemed_lt: BigInt
+  totalRedeemed_gte: BigInt
+  totalRedeemed_lte: BigInt
+  totalRedeemed_in: [BigInt!]
+  totalRedeemed_not_in: [BigInt!]
+  currentBalance: BigInt
+  currentBalance_not: BigInt
+  currentBalance_gt: BigInt
+  currentBalance_lt: BigInt
+  currentBalance_gte: BigInt
+  currentBalance_lte: BigInt
+  currentBalance_in: [BigInt!]
+  currentBalance_not_in: [BigInt!]
+  trendingScore: BigInt
+  trendingScore_not: BigInt
+  trendingScore_gt: BigInt
+  trendingScore_lt: BigInt
+  trendingScore_gte: BigInt
+  trendingScore_lte: BigInt
+  trendingScore_in: [BigInt!]
+  trendingScore_not_in: [BigInt!]
+  trendingVolume: BigInt
+  trendingVolume_not: BigInt
+  trendingVolume_gt: BigInt
+  trendingVolume_lt: BigInt
+  trendingVolume_gte: BigInt
+  trendingVolume_lte: BigInt
+  trendingVolume_in: [BigInt!]
+  trendingVolume_not_in: [BigInt!]
+  trendingPaymentsCount: Int
+  trendingPaymentsCount_not: Int
+  trendingPaymentsCount_gt: Int
+  trendingPaymentsCount_lt: Int
+  trendingPaymentsCount_gte: Int
+  trendingPaymentsCount_lte: Int
+  trendingPaymentsCount_in: [Int!]
+  trendingPaymentsCount_not_in: [Int!]
+  createdWithinTrendingWindow: Boolean
+  createdWithinTrendingWindow_not: Boolean
+  createdWithinTrendingWindow_in: [Boolean!]
+  createdWithinTrendingWindow_not_in: [Boolean!]
+  participants_: Participant_filter
+  payEvents_: PayEvent_filter
+  mintTokensEvents_: MintTokensEvent_filter
+  tapEvents_: TapEvent_filter
+  redeemEvents_: RedeemEvent_filter
+  printReservesEvents_: PrintReservesEvent_filter
+  distributeToPayoutModEvents_: DistributeToPayoutModEvent_filter
+  distributeToTicketModEvents_: DistributeToTicketModEvent_filter
+  deployedERC20s_: DeployedERC20Event_filter
+  distributePayoutsEvents_: DistributePayoutsEvent_filter
+  distributeToPayoutSplitEvents_: DistributeToPayoutSplitEvent_filter
+  distributeReservedTokensEvents_: DistributeReservedTokensEvent_filter
+  distributeToReservedTokenSplitEvents_: DistributeToReservedTokenSplitEvent_filter
+  deployedERC20Events_: DeployedERC20Event_filter
+  useAllowanceEvents_: UseAllowanceEvent_filter
+  projectEvents_: ProjectEvent_filter
+  ethErc20ProjectPayers_: ETHERC20ProjectPayer_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum Project_orderBy {
+  id
+  projectId
+  cv
+  handle
+  metadataUri
+  metadataDomain
+  terminal
+  owner
+  createdAt
+  totalPaid
+  totalRedeemed
+  currentBalance
+  trendingScore
+  trendingVolume
+  trendingPaymentsCount
+  createdWithinTrendingWindow
+  participants
+  payEvents
+  mintTokensEvents
+  tapEvents
+  redeemEvents
+  printReservesEvents
+  distributeToPayoutModEvents
+  distributeToTicketModEvents
+  deployedERC20s
+  distributePayoutsEvents
+  distributeToPayoutSplitEvents
+  distributeReservedTokensEvents
+  distributeToReservedTokenSplitEvents
+  deployedERC20Events
+  useAllowanceEvents
+  projectEvents
+  ethErc20ProjectPayers
+}
+
+type ProtocolLog {
+  id: ID!
+  v1: ProtocolV1Log
+  v2: ProtocolV2Log
+  projectsCount: Int!
+  volumePaid: BigInt!
+  volumeRedeemed: BigInt!
+  paymentsCount: Int!
+  redeemCount: Int!
+  erc20Count: Int!
+  trendingLastUpdatedTimestamp: Int!
+  oldestTrendingPayEvent: PayEvent
+}
+
+input ProtocolLog_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  v1_: ProtocolV1Log_filter
+  v2_: ProtocolV2Log_filter
+  projectsCount: Int
+  projectsCount_not: Int
+  projectsCount_gt: Int
+  projectsCount_lt: Int
+  projectsCount_gte: Int
+  projectsCount_lte: Int
+  projectsCount_in: [Int!]
+  projectsCount_not_in: [Int!]
+  volumePaid: BigInt
+  volumePaid_not: BigInt
+  volumePaid_gt: BigInt
+  volumePaid_lt: BigInt
+  volumePaid_gte: BigInt
+  volumePaid_lte: BigInt
+  volumePaid_in: [BigInt!]
+  volumePaid_not_in: [BigInt!]
+  volumeRedeemed: BigInt
+  volumeRedeemed_not: BigInt
+  volumeRedeemed_gt: BigInt
+  volumeRedeemed_lt: BigInt
+  volumeRedeemed_gte: BigInt
+  volumeRedeemed_lte: BigInt
+  volumeRedeemed_in: [BigInt!]
+  volumeRedeemed_not_in: [BigInt!]
+  paymentsCount: Int
+  paymentsCount_not: Int
+  paymentsCount_gt: Int
+  paymentsCount_lt: Int
+  paymentsCount_gte: Int
+  paymentsCount_lte: Int
+  paymentsCount_in: [Int!]
+  paymentsCount_not_in: [Int!]
+  redeemCount: Int
+  redeemCount_not: Int
+  redeemCount_gt: Int
+  redeemCount_lt: Int
+  redeemCount_gte: Int
+  redeemCount_lte: Int
+  redeemCount_in: [Int!]
+  redeemCount_not_in: [Int!]
+  erc20Count: Int
+  erc20Count_not: Int
+  erc20Count_gt: Int
+  erc20Count_lt: Int
+  erc20Count_gte: Int
+  erc20Count_lte: Int
+  erc20Count_in: [Int!]
+  erc20Count_not_in: [Int!]
+  trendingLastUpdatedTimestamp: Int
+  trendingLastUpdatedTimestamp_not: Int
+  trendingLastUpdatedTimestamp_gt: Int
+  trendingLastUpdatedTimestamp_lt: Int
+  trendingLastUpdatedTimestamp_gte: Int
+  trendingLastUpdatedTimestamp_lte: Int
+  trendingLastUpdatedTimestamp_in: [Int!]
+  trendingLastUpdatedTimestamp_not_in: [Int!]
+  oldestTrendingPayEvent: String
+  oldestTrendingPayEvent_not: String
+  oldestTrendingPayEvent_gt: String
+  oldestTrendingPayEvent_lt: String
+  oldestTrendingPayEvent_gte: String
+  oldestTrendingPayEvent_lte: String
+  oldestTrendingPayEvent_in: [String!]
+  oldestTrendingPayEvent_not_in: [String!]
+  oldestTrendingPayEvent_contains: String
+  oldestTrendingPayEvent_contains_nocase: String
+  oldestTrendingPayEvent_not_contains: String
+  oldestTrendingPayEvent_not_contains_nocase: String
+  oldestTrendingPayEvent_starts_with: String
+  oldestTrendingPayEvent_starts_with_nocase: String
+  oldestTrendingPayEvent_not_starts_with: String
+  oldestTrendingPayEvent_not_starts_with_nocase: String
+  oldestTrendingPayEvent_ends_with: String
+  oldestTrendingPayEvent_ends_with_nocase: String
+  oldestTrendingPayEvent_not_ends_with: String
+  oldestTrendingPayEvent_not_ends_with_nocase: String
+  oldestTrendingPayEvent_: PayEvent_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum ProtocolLog_orderBy {
+  id
+  v1
+  v2
+  projectsCount
+  volumePaid
+  volumeRedeemed
+  paymentsCount
+  redeemCount
+  erc20Count
+  trendingLastUpdatedTimestamp
+  oldestTrendingPayEvent
+}
+
+type ProtocolV1Log {
+  id: ID!
+  log: ProtocolLog!
+  projectsCount: Int!
+  volumePaid: BigInt!
+  volumeRedeemed: BigInt!
+  paymentsCount: Int!
+  redeemCount: Int!
+  erc20Count: Int!
+}
+
+input ProtocolV1Log_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  log: String
+  log_not: String
+  log_gt: String
+  log_lt: String
+  log_gte: String
+  log_lte: String
+  log_in: [String!]
+  log_not_in: [String!]
+  log_contains: String
+  log_contains_nocase: String
+  log_not_contains: String
+  log_not_contains_nocase: String
+  log_starts_with: String
+  log_starts_with_nocase: String
+  log_not_starts_with: String
+  log_not_starts_with_nocase: String
+  log_ends_with: String
+  log_ends_with_nocase: String
+  log_not_ends_with: String
+  log_not_ends_with_nocase: String
+  log_: ProtocolLog_filter
+  projectsCount: Int
+  projectsCount_not: Int
+  projectsCount_gt: Int
+  projectsCount_lt: Int
+  projectsCount_gte: Int
+  projectsCount_lte: Int
+  projectsCount_in: [Int!]
+  projectsCount_not_in: [Int!]
+  volumePaid: BigInt
+  volumePaid_not: BigInt
+  volumePaid_gt: BigInt
+  volumePaid_lt: BigInt
+  volumePaid_gte: BigInt
+  volumePaid_lte: BigInt
+  volumePaid_in: [BigInt!]
+  volumePaid_not_in: [BigInt!]
+  volumeRedeemed: BigInt
+  volumeRedeemed_not: BigInt
+  volumeRedeemed_gt: BigInt
+  volumeRedeemed_lt: BigInt
+  volumeRedeemed_gte: BigInt
+  volumeRedeemed_lte: BigInt
+  volumeRedeemed_in: [BigInt!]
+  volumeRedeemed_not_in: [BigInt!]
+  paymentsCount: Int
+  paymentsCount_not: Int
+  paymentsCount_gt: Int
+  paymentsCount_lt: Int
+  paymentsCount_gte: Int
+  paymentsCount_lte: Int
+  paymentsCount_in: [Int!]
+  paymentsCount_not_in: [Int!]
+  redeemCount: Int
+  redeemCount_not: Int
+  redeemCount_gt: Int
+  redeemCount_lt: Int
+  redeemCount_gte: Int
+  redeemCount_lte: Int
+  redeemCount_in: [Int!]
+  redeemCount_not_in: [Int!]
+  erc20Count: Int
+  erc20Count_not: Int
+  erc20Count_gt: Int
+  erc20Count_lt: Int
+  erc20Count_gte: Int
+  erc20Count_lte: Int
+  erc20Count_in: [Int!]
+  erc20Count_not_in: [Int!]
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum ProtocolV1Log_orderBy {
+  id
+  log
+  projectsCount
+  volumePaid
+  volumeRedeemed
+  paymentsCount
+  redeemCount
+  erc20Count
+}
+
+type ProtocolV2Log {
+  id: ID!
+  log: ProtocolLog!
+  projectsCount: Int!
+  volumePaid: BigInt!
+  volumeRedeemed: BigInt!
+  paymentsCount: Int!
+  redeemCount: Int!
+  erc20Count: Int!
+}
+
+input ProtocolV2Log_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  log: String
+  log_not: String
+  log_gt: String
+  log_lt: String
+  log_gte: String
+  log_lte: String
+  log_in: [String!]
+  log_not_in: [String!]
+  log_contains: String
+  log_contains_nocase: String
+  log_not_contains: String
+  log_not_contains_nocase: String
+  log_starts_with: String
+  log_starts_with_nocase: String
+  log_not_starts_with: String
+  log_not_starts_with_nocase: String
+  log_ends_with: String
+  log_ends_with_nocase: String
+  log_not_ends_with: String
+  log_not_ends_with_nocase: String
+  log_: ProtocolLog_filter
+  projectsCount: Int
+  projectsCount_not: Int
+  projectsCount_gt: Int
+  projectsCount_lt: Int
+  projectsCount_gte: Int
+  projectsCount_lte: Int
+  projectsCount_in: [Int!]
+  projectsCount_not_in: [Int!]
+  volumePaid: BigInt
+  volumePaid_not: BigInt
+  volumePaid_gt: BigInt
+  volumePaid_lt: BigInt
+  volumePaid_gte: BigInt
+  volumePaid_lte: BigInt
+  volumePaid_in: [BigInt!]
+  volumePaid_not_in: [BigInt!]
+  volumeRedeemed: BigInt
+  volumeRedeemed_not: BigInt
+  volumeRedeemed_gt: BigInt
+  volumeRedeemed_lt: BigInt
+  volumeRedeemed_gte: BigInt
+  volumeRedeemed_lte: BigInt
+  volumeRedeemed_in: [BigInt!]
+  volumeRedeemed_not_in: [BigInt!]
+  paymentsCount: Int
+  paymentsCount_not: Int
+  paymentsCount_gt: Int
+  paymentsCount_lt: Int
+  paymentsCount_gte: Int
+  paymentsCount_lte: Int
+  paymentsCount_in: [Int!]
+  paymentsCount_not_in: [Int!]
+  redeemCount: Int
+  redeemCount_not: Int
+  redeemCount_gt: Int
+  redeemCount_lt: Int
+  redeemCount_gte: Int
+  redeemCount_lte: Int
+  redeemCount_in: [Int!]
+  redeemCount_not_in: [Int!]
+  erc20Count: Int
+  erc20Count_not: Int
+  erc20Count_gt: Int
+  erc20Count_lt: Int
+  erc20Count_gte: Int
+  erc20Count_lte: Int
+  erc20Count_in: [Int!]
+  erc20Count_not_in: [Int!]
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum ProtocolV2Log_orderBy {
+  id
+  log
+  projectsCount
+  volumePaid
+  volumeRedeemed
+  paymentsCount
+  redeemCount
+  erc20Count
+}
+
+type Query {
+  protocolLog(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProtocolLog
+  protocolLogs(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProtocolLog_orderBy
+    orderDirection: OrderDirection
+    where: ProtocolLog_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProtocolLog!]!
+  projectCreateEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProjectCreateEvent
+  projectCreateEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProjectCreateEvent_orderBy
+    orderDirection: OrderDirection
+    where: ProjectCreateEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProjectCreateEvent!]!
+  project(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Project
+  projects(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: Project_orderBy
+    orderDirection: OrderDirection
+    where: Project_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Project!]!
+  ensnode(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ENSNode
+  ensnodes(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ENSNode_orderBy
+    orderDirection: OrderDirection
+    where: ENSNode_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ENSNode!]!
+  participant(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Participant
+  participants(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: Participant_orderBy
+    orderDirection: OrderDirection
+    where: Participant_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Participant!]!
+  projectEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProjectEvent
+  projectEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProjectEvent_orderBy
+    orderDirection: OrderDirection
+    where: ProjectEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProjectEvent!]!
+  payEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PayEvent
+  payEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: PayEvent_orderBy
+    orderDirection: OrderDirection
+    where: PayEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PayEvent!]!
+  mintTokensEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): MintTokensEvent
+  mintTokensEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: MintTokensEvent_orderBy
+    orderDirection: OrderDirection
+    where: MintTokensEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [MintTokensEvent!]!
+  redeemEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): RedeemEvent
+  redeemEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: RedeemEvent_orderBy
+    orderDirection: OrderDirection
+    where: RedeemEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [RedeemEvent!]!
+  deployedERC20Event(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DeployedERC20Event
+  deployedERC20Events(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DeployedERC20Event_orderBy
+    orderDirection: OrderDirection
+    where: DeployedERC20Event_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DeployedERC20Event!]!
+  protocolV1Log(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProtocolV1Log
+  protocolV1Logs(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProtocolV1Log_orderBy
+    orderDirection: OrderDirection
+    where: ProtocolV1Log_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProtocolV1Log!]!
+  printReservesEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PrintReservesEvent
+  printReservesEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: PrintReservesEvent_orderBy
+    orderDirection: OrderDirection
+    where: PrintReservesEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PrintReservesEvent!]!
+  distributeToPayoutModEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DistributeToPayoutModEvent
+  distributeToPayoutModEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DistributeToPayoutModEvent_orderBy
+    orderDirection: OrderDirection
+    where: DistributeToPayoutModEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DistributeToPayoutModEvent!]!
+  tapEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): TapEvent
+  tapEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: TapEvent_orderBy
+    orderDirection: OrderDirection
+    where: TapEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [TapEvent!]!
+  distributeToTicketModEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DistributeToTicketModEvent
+  distributeToTicketModEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DistributeToTicketModEvent_orderBy
+    orderDirection: OrderDirection
+    where: DistributeToTicketModEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DistributeToTicketModEvent!]!
+  protocolV2Log(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProtocolV2Log
+  protocolV2Logs(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProtocolV2Log_orderBy
+    orderDirection: OrderDirection
+    where: ProtocolV2Log_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProtocolV2Log!]!
+  distributePayoutsEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DistributePayoutsEvent
+  distributePayoutsEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DistributePayoutsEvent_orderBy
+    orderDirection: OrderDirection
+    where: DistributePayoutsEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DistributePayoutsEvent!]!
+  distributeToPayoutSplitEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DistributeToPayoutSplitEvent
+  distributeToPayoutSplitEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DistributeToPayoutSplitEvent_orderBy
+    orderDirection: OrderDirection
+    where: DistributeToPayoutSplitEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DistributeToPayoutSplitEvent!]!
+  distributeReservedTokensEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DistributeReservedTokensEvent
+  distributeReservedTokensEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DistributeReservedTokensEvent_orderBy
+    orderDirection: OrderDirection
+    where: DistributeReservedTokensEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DistributeReservedTokensEvent!]!
+  distributeToReservedTokenSplitEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DistributeToReservedTokenSplitEvent
+  distributeToReservedTokenSplitEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DistributeToReservedTokenSplitEvent_orderBy
+    orderDirection: OrderDirection
+    where: DistributeToReservedTokenSplitEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DistributeToReservedTokenSplitEvent!]!
+  useAllowanceEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): UseAllowanceEvent
+  useAllowanceEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: UseAllowanceEvent_orderBy
+    orderDirection: OrderDirection
+    where: UseAllowanceEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [UseAllowanceEvent!]!
+  deployETHERC20ProjectPayerEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DeployETHERC20ProjectPayerEvent
+  deployETHERC20ProjectPayerEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DeployETHERC20ProjectPayerEvent_orderBy
+    orderDirection: OrderDirection
+    where: DeployETHERC20ProjectPayerEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DeployETHERC20ProjectPayerEvent!]!
+  etherc20ProjectPayer(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ETHERC20ProjectPayer
+  etherc20ProjectPayers(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ETHERC20ProjectPayer_orderBy
+    orderDirection: OrderDirection
+    where: ETHERC20ProjectPayer_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ETHERC20ProjectPayer!]!
+  veNftToken(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): VeNftToken
+  veNftTokens(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: VeNftToken_orderBy
+    orderDirection: OrderDirection
+    where: VeNftToken_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [VeNftToken!]!
+  projectSearch(
+    text: String!
+    first: Int = 100
+    skip: Int = 0
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Project!]!
+  """Access to subgraph metadata"""
+  _meta(block: Block_height): _Meta_
+}
+
+type RedeemEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  cv: String!
+  timestamp: Int!
+  txHash: Bytes!
+  holder: Bytes!
+  beneficiary: Bytes!
+  amount: BigInt!
+  returnAmount: BigInt!
+  caller: Bytes!
+}
+
+input RedeemEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  cv: String
+  cv_not: String
+  cv_gt: String
+  cv_lt: String
+  cv_gte: String
+  cv_lte: String
+  cv_in: [String!]
+  cv_not_in: [String!]
+  cv_contains: String
+  cv_contains_nocase: String
+  cv_not_contains: String
+  cv_not_contains_nocase: String
+  cv_starts_with: String
+  cv_starts_with_nocase: String
+  cv_not_starts_with: String
+  cv_not_starts_with_nocase: String
+  cv_ends_with: String
+  cv_ends_with_nocase: String
+  cv_not_ends_with: String
+  cv_not_ends_with_nocase: String
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  holder: Bytes
+  holder_not: Bytes
+  holder_in: [Bytes!]
+  holder_not_in: [Bytes!]
+  holder_contains: Bytes
+  holder_not_contains: Bytes
+  beneficiary: Bytes
+  beneficiary_not: Bytes
+  beneficiary_in: [Bytes!]
+  beneficiary_not_in: [Bytes!]
+  beneficiary_contains: Bytes
+  beneficiary_not_contains: Bytes
+  amount: BigInt
+  amount_not: BigInt
+  amount_gt: BigInt
+  amount_lt: BigInt
+  amount_gte: BigInt
+  amount_lte: BigInt
+  amount_in: [BigInt!]
+  amount_not_in: [BigInt!]
+  returnAmount: BigInt
+  returnAmount_not: BigInt
+  returnAmount_gt: BigInt
+  returnAmount_lt: BigInt
+  returnAmount_gte: BigInt
+  returnAmount_lte: BigInt
+  returnAmount_in: [BigInt!]
+  returnAmount_not_in: [BigInt!]
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum RedeemEvent_orderBy {
+  id
+  project
+  projectId
+  cv
+  timestamp
+  txHash
+  holder
+  beneficiary
+  amount
+  returnAmount
+  caller
+}
+
+type Subscription {
+  protocolLog(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProtocolLog
+  protocolLogs(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProtocolLog_orderBy
+    orderDirection: OrderDirection
+    where: ProtocolLog_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProtocolLog!]!
+  projectCreateEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProjectCreateEvent
+  projectCreateEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProjectCreateEvent_orderBy
+    orderDirection: OrderDirection
+    where: ProjectCreateEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProjectCreateEvent!]!
+  project(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Project
+  projects(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: Project_orderBy
+    orderDirection: OrderDirection
+    where: Project_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Project!]!
+  ensnode(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ENSNode
+  ensnodes(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ENSNode_orderBy
+    orderDirection: OrderDirection
+    where: ENSNode_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ENSNode!]!
+  participant(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): Participant
+  participants(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: Participant_orderBy
+    orderDirection: OrderDirection
+    where: Participant_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [Participant!]!
+  projectEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProjectEvent
+  projectEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProjectEvent_orderBy
+    orderDirection: OrderDirection
+    where: ProjectEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProjectEvent!]!
+  payEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PayEvent
+  payEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: PayEvent_orderBy
+    orderDirection: OrderDirection
+    where: PayEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PayEvent!]!
+  mintTokensEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): MintTokensEvent
+  mintTokensEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: MintTokensEvent_orderBy
+    orderDirection: OrderDirection
+    where: MintTokensEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [MintTokensEvent!]!
+  redeemEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): RedeemEvent
+  redeemEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: RedeemEvent_orderBy
+    orderDirection: OrderDirection
+    where: RedeemEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [RedeemEvent!]!
+  deployedERC20Event(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DeployedERC20Event
+  deployedERC20Events(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DeployedERC20Event_orderBy
+    orderDirection: OrderDirection
+    where: DeployedERC20Event_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DeployedERC20Event!]!
+  protocolV1Log(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProtocolV1Log
+  protocolV1Logs(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProtocolV1Log_orderBy
+    orderDirection: OrderDirection
+    where: ProtocolV1Log_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProtocolV1Log!]!
+  printReservesEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PrintReservesEvent
+  printReservesEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: PrintReservesEvent_orderBy
+    orderDirection: OrderDirection
+    where: PrintReservesEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PrintReservesEvent!]!
+  distributeToPayoutModEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DistributeToPayoutModEvent
+  distributeToPayoutModEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DistributeToPayoutModEvent_orderBy
+    orderDirection: OrderDirection
+    where: DistributeToPayoutModEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DistributeToPayoutModEvent!]!
+  tapEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): TapEvent
+  tapEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: TapEvent_orderBy
+    orderDirection: OrderDirection
+    where: TapEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [TapEvent!]!
+  distributeToTicketModEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DistributeToTicketModEvent
+  distributeToTicketModEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DistributeToTicketModEvent_orderBy
+    orderDirection: OrderDirection
+    where: DistributeToTicketModEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DistributeToTicketModEvent!]!
+  protocolV2Log(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProtocolV2Log
+  protocolV2Logs(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProtocolV2Log_orderBy
+    orderDirection: OrderDirection
+    where: ProtocolV2Log_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProtocolV2Log!]!
+  distributePayoutsEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DistributePayoutsEvent
+  distributePayoutsEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DistributePayoutsEvent_orderBy
+    orderDirection: OrderDirection
+    where: DistributePayoutsEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DistributePayoutsEvent!]!
+  distributeToPayoutSplitEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DistributeToPayoutSplitEvent
+  distributeToPayoutSplitEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DistributeToPayoutSplitEvent_orderBy
+    orderDirection: OrderDirection
+    where: DistributeToPayoutSplitEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DistributeToPayoutSplitEvent!]!
+  distributeReservedTokensEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DistributeReservedTokensEvent
+  distributeReservedTokensEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DistributeReservedTokensEvent_orderBy
+    orderDirection: OrderDirection
+    where: DistributeReservedTokensEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DistributeReservedTokensEvent!]!
+  distributeToReservedTokenSplitEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DistributeToReservedTokenSplitEvent
+  distributeToReservedTokenSplitEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DistributeToReservedTokenSplitEvent_orderBy
+    orderDirection: OrderDirection
+    where: DistributeToReservedTokenSplitEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DistributeToReservedTokenSplitEvent!]!
+  useAllowanceEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): UseAllowanceEvent
+  useAllowanceEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: UseAllowanceEvent_orderBy
+    orderDirection: OrderDirection
+    where: UseAllowanceEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [UseAllowanceEvent!]!
+  deployETHERC20ProjectPayerEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): DeployETHERC20ProjectPayerEvent
+  deployETHERC20ProjectPayerEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: DeployETHERC20ProjectPayerEvent_orderBy
+    orderDirection: OrderDirection
+    where: DeployETHERC20ProjectPayerEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [DeployETHERC20ProjectPayerEvent!]!
+  etherc20ProjectPayer(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ETHERC20ProjectPayer
+  etherc20ProjectPayers(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ETHERC20ProjectPayer_orderBy
+    orderDirection: OrderDirection
+    where: ETHERC20ProjectPayer_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ETHERC20ProjectPayer!]!
+  veNftToken(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): VeNftToken
+  veNftTokens(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: VeNftToken_orderBy
+    orderDirection: OrderDirection
+    where: VeNftToken_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [VeNftToken!]!
+  """Access to subgraph metadata"""
+  _meta(block: Block_height): _Meta_
+}
+
+type TapEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  timestamp: Int!
+  txHash: Bytes!
+  fundingCycleId: BigInt!
+  beneficiary: Bytes!
+  amount: BigInt!
+  currency: BigInt!
+  netTransferAmount: BigInt!
+  beneficiaryTransferAmount: BigInt!
+  govFeeAmount: BigInt!
+  caller: Bytes!
+  distributions(skip: Int = 0, first: Int = 100, orderBy: DistributeToPayoutModEvent_orderBy, orderDirection: OrderDirection, where: DistributeToPayoutModEvent_filter): [DistributeToPayoutModEvent!]!
+}
+
+input TapEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  fundingCycleId: BigInt
+  fundingCycleId_not: BigInt
+  fundingCycleId_gt: BigInt
+  fundingCycleId_lt: BigInt
+  fundingCycleId_gte: BigInt
+  fundingCycleId_lte: BigInt
+  fundingCycleId_in: [BigInt!]
+  fundingCycleId_not_in: [BigInt!]
+  beneficiary: Bytes
+  beneficiary_not: Bytes
+  beneficiary_in: [Bytes!]
+  beneficiary_not_in: [Bytes!]
+  beneficiary_contains: Bytes
+  beneficiary_not_contains: Bytes
+  amount: BigInt
+  amount_not: BigInt
+  amount_gt: BigInt
+  amount_lt: BigInt
+  amount_gte: BigInt
+  amount_lte: BigInt
+  amount_in: [BigInt!]
+  amount_not_in: [BigInt!]
+  currency: BigInt
+  currency_not: BigInt
+  currency_gt: BigInt
+  currency_lt: BigInt
+  currency_gte: BigInt
+  currency_lte: BigInt
+  currency_in: [BigInt!]
+  currency_not_in: [BigInt!]
+  netTransferAmount: BigInt
+  netTransferAmount_not: BigInt
+  netTransferAmount_gt: BigInt
+  netTransferAmount_lt: BigInt
+  netTransferAmount_gte: BigInt
+  netTransferAmount_lte: BigInt
+  netTransferAmount_in: [BigInt!]
+  netTransferAmount_not_in: [BigInt!]
+  beneficiaryTransferAmount: BigInt
+  beneficiaryTransferAmount_not: BigInt
+  beneficiaryTransferAmount_gt: BigInt
+  beneficiaryTransferAmount_lt: BigInt
+  beneficiaryTransferAmount_gte: BigInt
+  beneficiaryTransferAmount_lte: BigInt
+  beneficiaryTransferAmount_in: [BigInt!]
+  beneficiaryTransferAmount_not_in: [BigInt!]
+  govFeeAmount: BigInt
+  govFeeAmount_not: BigInt
+  govFeeAmount_gt: BigInt
+  govFeeAmount_lt: BigInt
+  govFeeAmount_gte: BigInt
+  govFeeAmount_lte: BigInt
+  govFeeAmount_in: [BigInt!]
+  govFeeAmount_not_in: [BigInt!]
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  distributions_: DistributeToPayoutModEvent_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum TapEvent_orderBy {
+  id
+  project
+  projectId
+  timestamp
+  txHash
+  fundingCycleId
+  beneficiary
+  amount
+  currency
+  netTransferAmount
+  beneficiaryTransferAmount
+  govFeeAmount
+  caller
+  distributions
+}
+
+type UseAllowanceEvent {
+  id: ID!
+  project: Project!
+  projectId: Int!
+  timestamp: Int!
+  txHash: Bytes!
+  fundingCycleConfiguration: BigInt!
+  fundingCycleNumber: Int!
+  beneficiary: Bytes!
+  amount: BigInt!
+  distributedAmount: BigInt!
+  netDistributedamount: BigInt!
+  memo: String!
+  caller: Bytes!
+}
+
+input UseAllowanceEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  project: String
+  project_not: String
+  project_gt: String
+  project_lt: String
+  project_gte: String
+  project_lte: String
+  project_in: [String!]
+  project_not_in: [String!]
+  project_contains: String
+  project_contains_nocase: String
+  project_not_contains: String
+  project_not_contains_nocase: String
+  project_starts_with: String
+  project_starts_with_nocase: String
+  project_not_starts_with: String
+  project_not_starts_with_nocase: String
+  project_ends_with: String
+  project_ends_with_nocase: String
+  project_not_ends_with: String
+  project_not_ends_with_nocase: String
+  project_: Project_filter
+  projectId: Int
+  projectId_not: Int
+  projectId_gt: Int
+  projectId_lt: Int
+  projectId_gte: Int
+  projectId_lte: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  timestamp: Int
+  timestamp_not: Int
+  timestamp_gt: Int
+  timestamp_lt: Int
+  timestamp_gte: Int
+  timestamp_lte: Int
+  timestamp_in: [Int!]
+  timestamp_not_in: [Int!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  fundingCycleConfiguration: BigInt
+  fundingCycleConfiguration_not: BigInt
+  fundingCycleConfiguration_gt: BigInt
+  fundingCycleConfiguration_lt: BigInt
+  fundingCycleConfiguration_gte: BigInt
+  fundingCycleConfiguration_lte: BigInt
+  fundingCycleConfiguration_in: [BigInt!]
+  fundingCycleConfiguration_not_in: [BigInt!]
+  fundingCycleNumber: Int
+  fundingCycleNumber_not: Int
+  fundingCycleNumber_gt: Int
+  fundingCycleNumber_lt: Int
+  fundingCycleNumber_gte: Int
+  fundingCycleNumber_lte: Int
+  fundingCycleNumber_in: [Int!]
+  fundingCycleNumber_not_in: [Int!]
+  beneficiary: Bytes
+  beneficiary_not: Bytes
+  beneficiary_in: [Bytes!]
+  beneficiary_not_in: [Bytes!]
+  beneficiary_contains: Bytes
+  beneficiary_not_contains: Bytes
+  amount: BigInt
+  amount_not: BigInt
+  amount_gt: BigInt
+  amount_lt: BigInt
+  amount_gte: BigInt
+  amount_lte: BigInt
+  amount_in: [BigInt!]
+  amount_not_in: [BigInt!]
+  distributedAmount: BigInt
+  distributedAmount_not: BigInt
+  distributedAmount_gt: BigInt
+  distributedAmount_lt: BigInt
+  distributedAmount_gte: BigInt
+  distributedAmount_lte: BigInt
+  distributedAmount_in: [BigInt!]
+  distributedAmount_not_in: [BigInt!]
+  netDistributedamount: BigInt
+  netDistributedamount_not: BigInt
+  netDistributedamount_gt: BigInt
+  netDistributedamount_lt: BigInt
+  netDistributedamount_gte: BigInt
+  netDistributedamount_lte: BigInt
+  netDistributedamount_in: [BigInt!]
+  netDistributedamount_not_in: [BigInt!]
+  memo: String
+  memo_not: String
+  memo_gt: String
+  memo_lt: String
+  memo_gte: String
+  memo_lte: String
+  memo_in: [String!]
+  memo_not_in: [String!]
+  memo_contains: String
+  memo_contains_nocase: String
+  memo_not_contains: String
+  memo_not_contains_nocase: String
+  memo_starts_with: String
+  memo_starts_with_nocase: String
+  memo_not_starts_with: String
+  memo_not_starts_with_nocase: String
+  memo_ends_with: String
+  memo_ends_with_nocase: String
+  memo_not_ends_with: String
+  memo_not_ends_with_nocase: String
+  caller: Bytes
+  caller_not: Bytes
+  caller_in: [Bytes!]
+  caller_not_in: [Bytes!]
+  caller_contains: Bytes
+  caller_not_contains: Bytes
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum UseAllowanceEvent_orderBy {
+  id
+  project
+  projectId
+  timestamp
+  txHash
+  fundingCycleConfiguration
+  fundingCycleNumber
+  beneficiary
+  amount
+  distributedAmount
+  netDistributedamount
+  memo
+  caller
+}
+
+type VeNftToken {
+  id: ID!
+  tokenId: Int!
+  tokenUri: String!
+  createdAt: Int!
+  redeemedAt: Int
+  owner: Bytes!
+  participant: Participant!
+  lockAmount: BigInt!
+  lockEnd: Int!
+  lockDuration: Int!
+  lockUseJbToken: Boolean!
+  lockAllowPublicExtension: Boolean!
+  unlockedAt: Int!
+}
+
+input VeNftToken_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  tokenId: Int
+  tokenId_not: Int
+  tokenId_gt: Int
+  tokenId_lt: Int
+  tokenId_gte: Int
+  tokenId_lte: Int
+  tokenId_in: [Int!]
+  tokenId_not_in: [Int!]
+  tokenUri: String
+  tokenUri_not: String
+  tokenUri_gt: String
+  tokenUri_lt: String
+  tokenUri_gte: String
+  tokenUri_lte: String
+  tokenUri_in: [String!]
+  tokenUri_not_in: [String!]
+  tokenUri_contains: String
+  tokenUri_contains_nocase: String
+  tokenUri_not_contains: String
+  tokenUri_not_contains_nocase: String
+  tokenUri_starts_with: String
+  tokenUri_starts_with_nocase: String
+  tokenUri_not_starts_with: String
+  tokenUri_not_starts_with_nocase: String
+  tokenUri_ends_with: String
+  tokenUri_ends_with_nocase: String
+  tokenUri_not_ends_with: String
+  tokenUri_not_ends_with_nocase: String
+  createdAt: Int
+  createdAt_not: Int
+  createdAt_gt: Int
+  createdAt_lt: Int
+  createdAt_gte: Int
+  createdAt_lte: Int
+  createdAt_in: [Int!]
+  createdAt_not_in: [Int!]
+  redeemedAt: Int
+  redeemedAt_not: Int
+  redeemedAt_gt: Int
+  redeemedAt_lt: Int
+  redeemedAt_gte: Int
+  redeemedAt_lte: Int
+  redeemedAt_in: [Int!]
+  redeemedAt_not_in: [Int!]
+  owner: Bytes
+  owner_not: Bytes
+  owner_in: [Bytes!]
+  owner_not_in: [Bytes!]
+  owner_contains: Bytes
+  owner_not_contains: Bytes
+  participant: String
+  participant_not: String
+  participant_gt: String
+  participant_lt: String
+  participant_gte: String
+  participant_lte: String
+  participant_in: [String!]
+  participant_not_in: [String!]
+  participant_contains: String
+  participant_contains_nocase: String
+  participant_not_contains: String
+  participant_not_contains_nocase: String
+  participant_starts_with: String
+  participant_starts_with_nocase: String
+  participant_not_starts_with: String
+  participant_not_starts_with_nocase: String
+  participant_ends_with: String
+  participant_ends_with_nocase: String
+  participant_not_ends_with: String
+  participant_not_ends_with_nocase: String
+  participant_: Participant_filter
+  lockAmount: BigInt
+  lockAmount_not: BigInt
+  lockAmount_gt: BigInt
+  lockAmount_lt: BigInt
+  lockAmount_gte: BigInt
+  lockAmount_lte: BigInt
+  lockAmount_in: [BigInt!]
+  lockAmount_not_in: [BigInt!]
+  lockEnd: Int
+  lockEnd_not: Int
+  lockEnd_gt: Int
+  lockEnd_lt: Int
+  lockEnd_gte: Int
+  lockEnd_lte: Int
+  lockEnd_in: [Int!]
+  lockEnd_not_in: [Int!]
+  lockDuration: Int
+  lockDuration_not: Int
+  lockDuration_gt: Int
+  lockDuration_lt: Int
+  lockDuration_gte: Int
+  lockDuration_lte: Int
+  lockDuration_in: [Int!]
+  lockDuration_not_in: [Int!]
+  lockUseJbToken: Boolean
+  lockUseJbToken_not: Boolean
+  lockUseJbToken_in: [Boolean!]
+  lockUseJbToken_not_in: [Boolean!]
+  lockAllowPublicExtension: Boolean
+  lockAllowPublicExtension_not: Boolean
+  lockAllowPublicExtension_in: [Boolean!]
+  lockAllowPublicExtension_not_in: [Boolean!]
+  unlockedAt: Int
+  unlockedAt_not: Int
+  unlockedAt_gt: Int
+  unlockedAt_lt: Int
+  unlockedAt_gte: Int
+  unlockedAt_lte: Int
+  unlockedAt_in: [Int!]
+  unlockedAt_not_in: [Int!]
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum VeNftToken_orderBy {
+  id
+  tokenId
+  tokenUri
+  createdAt
+  redeemedAt
+  owner
+  participant
+  lockAmount
+  lockEnd
+  lockDuration
+  lockUseJbToken
+  lockAllowPublicExtension
+  unlockedAt
+}
+
+type _Block_ {
+  """The hash of the block"""
+  hash: Bytes
+  """The block number"""
+  number: Int!
+}
+
+"""The type for the top-level _meta field"""
+type _Meta_ {
+  """
+  Information about a specific subgraph block. The hash of the block
+  will be null if the _meta field has a block constraint that asks for
+  a block number. It will be filled if the _meta field has no block constraint
+  and therefore asks for the latest  block
+  
+  """
+  block: _Block_!
+  """The deployment ID"""
+  deployment: String!
+  """If `true`, the subgraph encountered indexing errors at some past block"""
+  hasIndexingErrors: Boolean!
+}
+
+enum _SubgraphErrorPolicy_ {
+  """Data will be returned even if the subgraph has indexing errors"""
+  allow
+  """
+  If the subgraph has indexing errors, data will be omitted. The default.
+  """
+  deny
+}
