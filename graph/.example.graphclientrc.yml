@@ -1,8 +1,0 @@
-sources:
-  - name: juicebox
-    handler:
-      graphql:
-        endpoint: https://gateway.thegraph.com/api/[api-key]/subgraphs/id/FVmuv3TndQDNd2BWARV8Y27yuKKukryKXPzvAS5E7htC
-
-documents:
-  - ./queries/*.graphql
