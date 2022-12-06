@@ -1,0 +1,99 @@
+\documentclass{article}
+
+\title{JuiceboxDAO Accounting Summary}
+
+\begin{document}
+
+\maketitle
+
+\section{The Juicebox Protocol}
+
+Ethereum is a blockchain which allows its users to send and receive a cryptocurrency called ETH. Ethereum also allows its users to create \textbf{smart contracts}. Smart contracts are computer programs stored directly on the Ethereum blockchain which can interact with ETH, other users, and other contracts in complex ways.
+
+The Juicebox protocol is a collection of smart contracts on Ethereum, used to manage treasuries which operate according to programmable rules. These treasuries are called \textbf{projects}, or \textbf{Juicebox projects}. Anybody can make a Juicebox project.
+
+\subsection{Funding Cycles}
+
+The owner of a Juicebox project can change the rules which the project follows over time. These changes are expressed in \textbf{funding cycles}. A funding cycle is a length of time during which the project's rules cannot change.
+
+\subsection{Project Tokens}
+
+The Juicebox Protocol keeps track of custom tokens for each project. These tokens are called \textbf{project tokens}. Each project has its own project tokens.
+
+Anyone can pay any Juicebox project with ETH, and receive that project's project tokens. The amount of project tokens minted per ETH can be customized by the project owner, and can change over time. The project owner can also reserve a percentage of newly minted project tokens for a list of receipients which they can define.
+
+\subsection{Overflow}
+
+Each funding cycle, a project's owner can set a \textbf{distribution limit}. This can be any number from 0 to infinity, and can be either ETH or USD. Juicebox only actually uses ETH, but can do calculations based on ETH's price in USD. The distribution limit is the maximum amount of funds that the project owner can distribute (take/send out of) the project.
+
+Any funds in the project which exceed the distribution limit are considered \textbf{overflow}. For example:
+
+\begin{itemize}
+\item Jim has an animation studio and needs \$1,000 per month to cover his expenses.
+\item Jim makes a Juicebox project with a 30 day funding cycle and a \$1,000 distribution limit. Jim can now pull \$1,000 out of the Juicebox project every 30 days.
+\item Many people support Jim, and his project receives 15 ETH. Let's assume ETH is worth \$100 at the time. In that case, Jim has \$1,500 worth of ETH in his project.
+\end{itemize}
+
+In the example above, Jim's project would have 5 ETH of overflow (worth \$500) since this is the amount by which he has exceeded his distribution limit.
+
+Project tokens can be redeemed in order to receive a share of that project's overflow. By default, this is a pro-rata share, but the project creator can make these redemption amounts follow a bonding curve from 0 to 100 percent.
+
+\section{JuiceboxDAO}
+
+JuiceboxDAO is the group building the Juicebox protocol and the ecosystem around it. There are a three versions of the Juicebox protocol, and JuiceboxDAO has a Juicebox project for each one. JuiceboxDAO manages payouts to its contributors, grants, and other expenses using these projects. It also receives payments and fees through these projects. 
+
+JuiceboxDAO also has a multisignature wallet to manage things which it cannot manage through the protocol.
+
+\subsection{Cash Inflows}
+
+\subsubsection{Fees}
+
+Juicebox projects can either distribute funds to Ethereum addresses (which can be a person or a smart contract), or to other Juicebox projects. Distributions to Ethereum addresses invoke a 2.5\% protocol fee, which is paid to JuiceboxDAO's project. In exchange for this fee, projects receive JBX, which is JuiceboxDAO's project token. Historically, this fee percentage has changed a few times—0 percent at the lowest and 5 percent at the highest.
+
+\subsubsection{Contributions}
+
+People can also directly pay JuiceboxDAO's projects through the protocol, and receive JBX in the process. Contributions and fees are JuiceboxDAO's main inflows of funds.
+
+\subsection{Cash Outflows}
+
+\subsubsection{Protocol Payouts}
+
+JuiceboxDAO typically pays contributors and service providers through its projects. This is handled by the protocol. When doing this, the DAO pays protocol fees to itself.
+
+\subsubsection{Multisig Payments}
+
+Under some circumstances, JuiceboxDAO has needed to pay someone via JuiceboxDAO's multisignature wallet, and may need to swap ETH for another currency in order to do so.
+
+\subsubsection{Fiat Payments}
+
+Under other circumstances, JuiceboxDAO has needed to make a payment with USD, in which case a contributor will typically use an exchange like Coinbase to swap ETH for USD on behalf of the DAO.
+
+\subsubsection{Redemptions}
+
+As mentioned above, JBX token holders can redeem their tokens to claim some of the ETH in the treasury.
+
+\section{Understanding the Balance Sheet}
+
+The balance sheet aggregates information from several sources.
+
+\subsection{Raw Sheets}
+
+\begin{itemize}
+\item \texttt{safe\_balances} shows the current balances and values of the assets within JuiceboxDAO's multisignature wallet (at the time of my query). The first row is ETH.
+\item \texttt{safe\_transfers} shows inflows and outflows of ETH and other cryptocurrencies from JuiceboxDAO's multisignature wallet. The multisignature wallet's address is \texttt{0xAF28bcB48C40dBC86f52D459A6562F658fc94B1e}. Rows with this address in the to column are inflows, and rows with address in the from field are outflows.
+\item \texttt{v1-additions} and \texttt{v2-additions} show additions to the balance of JuiceboxDAO's v1 and v2 projects, respectively. "Add to balance" is a way of depositing funds within the project without minting project tokens. This is typically used for internal transfers.
+\item \texttt{v1-payments} and \texttt{v2-payments} show payments to JuiceboxDAO's v1 and v2 projects, respectively. These payments mint JBX project tokens. \textbf{These sheets include fee payments.}
+\item \texttt{v1-fees} and \texttt{v2-fees} show fees paid on v1 and v2 of the protocol, respectively. \textbf{These sheets are a subset of the payments sheets.} Fee payments in these sheets are also listed on the \texttt{v1-payments} and \texttt{v2-payments} sheets.
+\item \texttt{v1-redemptions} and \texttt{v2-redemptions} show redemptions of JBX in exchange for ETH from JuiceboxDAO's projects. The amount column is the amount of JBX redeemed, and the returnAmount column is the amount of ETH returned to the redeemer.
+\item \texttt{v1-distributions} and \texttt{v2-distributions} show funds being taken out from JuiceboxDAO's v1 and v2 projects, respectively. The netTransferAmount/distributedAmount column shows the amount of ETH being taken out. The beneficiaryTransferAmount/beneficiaryDistributionAmount column shows the amount of ETH being sent to the project owner (in this case the Juicebox multisig).
+\item \texttt{v1-splits} and \texttt{v2-splits} show a breakdown of which addresses distributions are being sent to. One distribution can contain many splits to different recipients. If the modProjectId/splitProjectId column is 0, the split is being sent to the address listed in the modBeneficiary/beneficiary column. If the modProjectId/splitProjectId column is non-zero, the split is being sent to that project. The splits sheets do not contain the beneficiaryTransferAmount/beneficiaryDistributionAmount contained in the distributions sheets.
+\end{itemize}
+
+\subsection{Examples}
+
+\begin{itemize}
+\item To show the cumulative USD value of direct contributions (based on the price of ETH at the time those contributions took place), add the totals of the amountFiat columns in \texttt{v1-payments} and \texttt{v2-payments} and subtract the totals of the govFeeAmountFiat/feeFiat columns in \texttt{v1-fees} and \texttt{v2-fees}.
+\item See more examples in the \textbf{Main} sheet.
+\end{itemize}
+
+\end{document}
